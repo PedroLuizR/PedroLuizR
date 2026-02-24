@@ -68,6 +68,4 @@ public class Pedro {
 
 *"Você aprende muito mais tentando."*
 
-![Visitors](https://visitor-badge.lielber.me/badge?page_id=PedroLuizR.PedroLuizR)
-
 </div>
