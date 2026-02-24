@@ -64,18 +64,6 @@ public class Pedro {
 
 ---
 
-## 📊 GitHub Stats
-
-<div align="center">
-
-![Pedro's GitHub Stats](https://github-readme-stats.vercel.app/api?username=PedroLuizR&show_icons=true&theme=tokyonight&hide_border=true&locale=pt-br)
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=PedroLuizR&layout=compact&theme=tokyonight&hide_border=true&locale=pt-br)
-
-</div>
-
----
-
 <div align="center">
 
 *"Você aprende muito mais tentando."*
