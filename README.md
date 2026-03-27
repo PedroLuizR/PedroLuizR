@@ -1,58 +1,63 @@
 <div align="center">
 
-```
-██████╗ ███████╗██████╗ ██████╗  ██████╗
-██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔═══██╗
-██████╔╝█████╗  ██║  ██║██████╔╝██║   ██║
-██╔═══╝ ██╔══╝  ██║  ██║██╔══██╗██║   ██║
-██║     ███████╗██████╔╝██║  ██║╚██████╔╝
-╚═╝     ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
-```
-
+# Pedro Luiz
 ### Estudante de Engenharia de Software · Foco em Back-End
 **Manaus, Amazonas 🌿**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/pedro-luiz-lima-cerqueira-da-rocha)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pedro-luiz-lima-cerqueira-da-rocha)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/PedroLuizR)
 
 </div>
 
 ---
 
-## 👨‍💻 Sobre mim
+## Sobre mim
 
 Estudante de **Engenharia de Software** na Fametro, apaixonado por construir coisas que funcionam por baixo dos panos. Meu foco é o **back-end** — lógica, arquitetura, banco de dados e APIs que sustentam tudo.
 
 Busco minha primeira oportunidade como **desenvolvedor júnior ou estagiário**, onde eu possa contribuir com projetos reais e crescer junto com o time.
-
 ```java
 public class Pedro {
-    String[] foco     = {"Back-End", "APIs REST", "Banco de Dados"};
-    String[] stack    = {"Java", "Node.js", "MongoDB"};
-    String   status   = "Aberto a oportunidades 🚀";
+    String[] foco    = {"Back-End", "APIs REST", "Banco de Dados"};
+    String[] stack   = {"Java", "Node.js", "MongoDB"};
+    String   status  = "Aberto a oportunidades 🚀";
     boolean  aprendendo = true;
 }
 ```
 
 ---
 
-## 🛠️ Tecnologias & Ferramentas
+## Tecnologias & Ferramentas
 
 <div align="center">
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 
 </div>
 
 ---
 
-## 📚 Certificações
+## Contribuições
+
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/github-contribution-grid-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/github-contribution-grid-snake.svg" />
+</picture>
+
+</div>
+
+---
+
+## Certificações
 
 | Curso | Instituição | Ano |
 |---|---|---|
