@@ -16,14 +16,6 @@
 Estudante de **Engenharia de Software** na Fametro, apaixonado por construir coisas que funcionam por baixo dos panos. Meu foco é o **back-end** — lógica, arquitetura, banco de dados e APIs que sustentam tudo.
 
 Busco minha primeira oportunidade como **desenvolvedor júnior ou estagiário**, onde eu possa contribuir com projetos reais e crescer junto com o time.
-```java
-public class Pedro {
-    String[] foco    = {"Back-End", "APIs REST", "Banco de Dados"};
-    String[] stack   = {"Java", "Node.js", "MongoDB"};
-    String   status  = "Aberto a oportunidades 🚀";
-    boolean  aprendendo = true;
-}
-```
 
 ---
 
@@ -38,20 +30,6 @@ public class Pedro {
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-
-</div>
-
----
-
-## Contribuições
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/github-contribution-grid-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/github-contribution-grid-snake.svg" />
-</picture>
 
 </div>
 
