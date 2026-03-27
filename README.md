@@ -39,14 +39,14 @@ Busco minha primeira oportunidade como **desenvolvedor júnior ou estagiário**,
 ### 📦 Sistema de Gerenciamento de Pedidos
 > Sistema OOP com herança, polimorfismo e exceções customizadas para gerenciamento completo de pedidos.
 
-`Java` · [Ver repositório →]([https://github.com/PedroLuizR](https://github.com/PedroLuizR/Sistema_de_Gestao_de_Pedidos))
+`Java` · [Ver repositório →]((https://github.com/PedroLuizR/Sistema_de_Gestao_de_Pedidos))
 
 ---
 
 ### 🏦 Sistema de Conta Bancária
 > Implementação de conta bancária com classes abstratas, enums e controle de operações financeiras.
 
-`Java` · [Ver repositório →]([https://github.com/PedroLuizR](https://github.com/PedroLuizR/Sistema_Bancario_Simples))
+`Java` · [Ver repositório →]((https://github.com/PedroLuizR/Sistema_Bancario_Simples))
 
 ---
 
