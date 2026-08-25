@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="230" viewBox="0 0 880 230" role="img" aria-label="Pedro Luiz — Engenharia de Software, Back-End">
+<defs>
+<linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#78b8a4" stop-opacity="0"/><stop offset="0.25" stop-color="#90d4e6"/>
+  <stop offset="0.55" stop-color="#a884e8"/><stop offset="0.8" stop-color="#9db3f0"/>
+  <stop offset="1" stop-color="#9db3f0" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#a884e8" stop-opacity="0.13"/><stop offset="1" stop-color="#a884e8" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<rect width="880" height="230" rx="14" fill="#14131c" stroke="#211e2e"/>
+<rect width="880" height="138" rx="14" fill="url(#glow)"/>
+<circle cx="34" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="846" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="34" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="846" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="34" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="846" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="34" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="846" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="34" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="846" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="34" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="846" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="51" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="829" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="51" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="829" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="51" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="829" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="51" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="829" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="51" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="829" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="51" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="829" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="68" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="812" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="68" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="812" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="68" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="812" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="68" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="812" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="68" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="812" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="68" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="812" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="85" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="795" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="85" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="795" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="85" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="795" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="85" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="795" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="85" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="795" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="85" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="795" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="102" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="778" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="102" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="778" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="102" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="778" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="102" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="778" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="102" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="778" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="102" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="778" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="119" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="761" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="119" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="761" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="119" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="761" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="119" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="761" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="119" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="761" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="119" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="761" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="136" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="744" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="136" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="744" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="136" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="744" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="136" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="744" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="136" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="744" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="136" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<circle cx="744" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
+<text x="436.5" y="88" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="46" font-weight="700" letter-spacing="7" fill="#cbc7da">PEDRO LUIZ</text>
+<rect x="270.0" y="107" width="340" height="1.6" fill="url(#rule)"/>
+<text x="440.0" y="140" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" letter-spacing="1.5" fill="#a884e8">Engenharia de Software · Back-End</text>
+<text x="440.0" y="167" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="#736d92">Manaus · Amazonas · Brasil</text>
+<rect x="324.0" y="186" width="232" height="30" rx="15" fill="#100f16" stroke="#211e2e"/>
+<circle cx="345.0" cy="201.0" r="4.5" fill="#78b8a4"/>
+<circle cx="345.0" cy="201.0" r="8" fill="none" stroke="#78b8a4" stroke-opacity="0.32"/>
+<text x="453.0" y="206" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#78b8a4">aberto a estágio e júnior</text>
+</svg>
