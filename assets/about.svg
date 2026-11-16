@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="880" height="330" viewBox="0 0 880 330" role="img" aria-label="Sobre mim: estudante de Engenharia de Software na Fametro, foco em back-end com Java, Spring Boot e MongoDB, buscando estágio ou vaga júnior.">
+<style>
+  text{white-space:pre;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px}
+  .ln{fill:#4b4175}.k{fill:#c084fc}.t{fill:#f0abfc}.s{fill:#a5f3c4}.p{fill:#ddd6fe}.c{fill:#6d5fa0;font-style:italic}.f{fill:#93c5fd}.n{fill:#fbbf77}
+  .l{opacity:0;animation:in .4s ease-out forwards}
+  @keyframes in{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+  .cur{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.l{animation:none;opacity:1}}
+</style>
+<rect x=".5" y=".5" width="879" height="329" rx="14" fill="#0f0b1a" stroke="#2e2350"/>
+<path d="M14 .5h852a13.5 13.5 0 0 1 13.5 13.5v26H.5V14A13.5 13.5 0 0 1 14 .5z" fill="#161127"/>
+<line x1="0" y1="40" x2="880" y2="40" stroke="#2e2350"/>
+<circle cx="24" cy="20" r="5" fill="#f472b6" opacity=".8"/><circle cx="42" cy="20" r="5" fill="#c084fc" opacity=".8"/><circle cx="60" cy="20" r="5" fill="#818cf8" opacity=".8"/>
+<rect x="90" y="8" width="150" height="32" rx="6" fill="#0f0b1a"/>
+<text x="106" y="29" class="p" style="font-size:12.5px"><tspan class="n">☕</tspan> PedroLuiz.java</text>
+<text x="860" y="25" text-anchor="end" class="c" style="font-size:11.5px;font-style:normal">Violet Frost · UTF-8</text>
+
+<g transform="translate(0,4)">
+<text x="26" y="70" class="ln">1</text><text x="26" y="92" class="ln">2</text><text x="26" y="114" class="ln">3</text><text x="26" y="136" class="ln">4</text><text x="26" y="158" class="ln">5</text><text x="26" y="180" class="ln">6</text><text x="26" y="202" class="ln">7</text><text x="26" y="224" class="ln">8</text><text x="26" y="246" class="ln">9</text><text x="20" y="268" class="ln">10</text><text x="20" y="290" class="ln">11</text><text x="20" y="312" class="ln">12</text>
+
+<text x="58" y="70" class="l" style="animation-delay:.1s"><tspan class="k">public class</tspan> <tspan class="t">PedroLuiz</tspan> <tspan class="k">extends</tspan> <tspan class="t">Estudante</tspan> <tspan class="p">{</tspan></text>
+<text x="58" y="92" class="l" style="animation-delay:.3s"><tspan class="c">    // Engenharia de Software — Fametro, Manaus/AM</tspan></text>
+<text x="58" y="114" class="l" style="animation-delay:.5s"><tspan class="k">    String</tspan><tspan class="p"> foco      = </tspan><tspan class="s">"Back-End"</tspan><tspan class="p">;</tspan></text>
+<text x="58" y="136" class="l" style="animation-delay:.7s"><tspan class="k">    String</tspan><tspan class="p">[] stack  = { </tspan><tspan class="s">"Java"</tspan><tspan class="p">, </tspan><tspan class="s">"Spring Boot"</tspan><tspan class="p">, </tspan><tspan class="s">"MongoDB"</tspan><tspan class="p">, </tspan><tspan class="s">"Node.js"</tspan><tspan class="p"> };</tspan></text>
+<text x="58" y="158" class="l" style="animation-delay:.9s"><tspan class="k">    String</tspan><tspan class="p">[] gosto  = { </tspan><tspan class="s">"APIs REST"</tspan><tspan class="p">, </tspan><tspan class="s">"POO"</tspan><tspan class="p">, </tspan><tspan class="s">"arquitetura"</tspan><tspan class="p">, </tspan><tspan class="s">"banco de dados"</tspan><tspan class="p"> };</tspan></text>
+<text x="58" y="180" class="l" style="animation-delay:1.1s"><tspan class="k">    String</tspan><tspan class="p"> estudando = </tspan><tspan class="s">"TypeScript, testes e boas práticas"</tspan><tspan class="p">;</tspan></text>
+<text x="58" y="202" class="l" style="animation-delay:1.3s"><tspan class="k">    boolean</tspan><tspan class="p"> abertoAVagas = </tspan><tspan class="n">true</tspan><tspan class="p">; </tspan><tspan class="c">// estágio ou júnior</tspan></text>
+<text x="58" y="224" class="l" style="animation-delay:1.5s"></text>
+<text x="58" y="246" class="l" style="animation-delay:1.7s"><tspan class="k">    public</tspan><tspan class="t"> String</tspan><tspan class="f"> missao</tspan><tspan class="p">() {</tspan></text>
+<text x="58" y="268" class="l" style="animation-delay:1.9s"><tspan class="k">        return</tspan><tspan class="s"> "Construir o que funciona por baixo dos panos."</tspan><tspan class="p">;</tspan></text>
+<text x="58" y="290" class="l" style="animation-delay:2.1s"><tspan class="p">    }</tspan></text>
+<text x="58" y="312" class="l" style="animation-delay:2.3s"><tspan class="p">}</tspan><tspan class="cur" fill="#e879f9"> ▍</tspan></text>
+</g>
+</svg>

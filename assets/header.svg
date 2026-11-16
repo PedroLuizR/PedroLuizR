@@ -1,106 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="230" viewBox="0 0 880 230" role="img" aria-label="Pedro Luiz — Engenharia de Software, Back-End">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="270" viewBox="0 0 880 270" role="img" aria-label="Pedro Luiz — Desenvolvedor Back-End · Java, Spring Boot e MongoDB">
+<style>
+  .orb{animation:float 9s ease-in-out infinite}
+  .orb2{animation:float 11s ease-in-out infinite reverse}
+  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,18px)}}
+  .rot{opacity:0;animation:cycle 12s infinite}
+  .r2{animation-delay:4s}.r3{animation-delay:8s}
+  @keyframes cycle{0%{opacity:0;transform:translateY(8px)}4%,29%{opacity:1;transform:translateY(0)}33%,100%{opacity:0;transform:translateY(-8px)}}
+  .pulse{animation:pulse 2.2s ease-out infinite;transform-origin:331px 229px}
+  @keyframes pulse{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(2.6)}}
+  .shine{animation:shine 6s linear infinite}
+  @keyframes shine{from{transform:translateX(-500px)}to{transform:translateX(900px)}}
+  .cur{animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.orb,.orb2,.pulse,.shine,.cur{animation:none}.rot{animation:none}.r1{opacity:1}}
+</style>
 <defs>
-<linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
-  <stop offset="0" stop-color="#78b8a4" stop-opacity="0"/><stop offset="0.25" stop-color="#90d4e6"/>
-  <stop offset="0.55" stop-color="#a884e8"/><stop offset="0.8" stop-color="#9db3f0"/>
-  <stop offset="1" stop-color="#9db3f0" stop-opacity="0"/>
-</linearGradient>
-<linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#a884e8" stop-opacity="0.13"/><stop offset="1" stop-color="#a884e8" stop-opacity="0"/>
-</linearGradient>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#140d26"/><stop offset="1" stop-color="#0b0814"/>
+  </linearGradient>
+  <linearGradient id="name" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ede9fe"/><stop offset=".5" stop-color="#c4b5fd"/><stop offset="1" stop-color="#e9d5ff"/>
+  </linearGradient>
+  <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#7c3aed" stop-opacity="0"/><stop offset=".3" stop-color="#8b5cf6"/>
+    <stop offset=".6" stop-color="#d946ef"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="sh" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="o1"><stop offset="0" stop-color="#7c3aed" stop-opacity=".55"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
+  <radialGradient id="o2"><stop offset="0" stop-color="#c026d3" stop-opacity=".35"/><stop offset="1" stop-color="#c026d3" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#3b2d63" opacity=".55"/></pattern>
+  <clipPath id="clip"><rect width="880" height="270" rx="18"/></clipPath>
 </defs>
-<rect width="880" height="230" rx="14" fill="#14131c" stroke="#211e2e"/>
-<rect width="880" height="138" rx="14" fill="url(#glow)"/>
-<circle cx="34" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="846" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="34" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="846" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="34" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="846" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="34" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="846" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="34" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="846" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="34" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="846" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="51" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="829" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="51" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="829" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="51" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="829" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="51" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="829" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="51" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="829" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="51" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="829" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="68" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="812" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="68" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="812" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="68" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="812" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="68" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="812" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="68" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="812" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="68" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="812" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="85" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="795" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="85" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="795" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="85" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="795" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="85" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="795" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="85" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="795" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="85" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="795" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="102" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="778" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="102" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="778" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="102" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="778" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="102" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="778" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="102" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="778" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="102" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="778" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="119" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="761" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="119" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="761" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="119" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="761" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="119" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="761" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="119" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="761" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="119" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="761" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="136" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="744" cy="34" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="136" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="744" cy="51" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="136" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="744" cy="68" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="136" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="744" cy="85" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="136" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="744" cy="102" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="136" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<circle cx="744" cy="119" r="1.25" fill="#3d3752" opacity="0.55"/>
-<text x="436.5" y="88" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="46" font-weight="700" letter-spacing="7" fill="#cbc7da">PEDRO LUIZ</text>
-<rect x="270.0" y="107" width="340" height="1.6" fill="url(#rule)"/>
-<text x="440.0" y="140" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" letter-spacing="1.5" fill="#a884e8">Engenharia de Software · Back-End</text>
-<text x="440.0" y="167" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="#736d92">Manaus · Amazonas · Brasil</text>
-<rect x="324.0" y="186" width="232" height="30" rx="15" fill="#100f16" stroke="#211e2e"/>
-<circle cx="345.0" cy="201.0" r="4.5" fill="#78b8a4"/>
-<circle cx="345.0" cy="201.0" r="8" fill="none" stroke="#78b8a4" stroke-opacity="0.32"/>
-<text x="453.0" y="206" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#78b8a4">aberto a estágio e júnior</text>
+<g clip-path="url(#clip)">
+  <rect width="880" height="270" fill="url(#bg)"/>
+  <rect width="880" height="270" fill="url(#dots)"/>
+  <circle class="orb" cx="170" cy="60" r="230" fill="url(#o1)"/>
+  <circle class="orb2" cx="740" cy="230" r="220" fill="url(#o2)"/>
+  <rect class="shine" x="0" y="0" width="260" height="270" fill="url(#sh)" transform="skewX(-20)"/>
+</g>
+<rect x=".5" y=".5" width="879" height="269" rx="18" fill="none" stroke="#3b2a6b"/>
+
+<!-- janela -->
+<circle cx="30" cy="28" r="5" fill="#f472b6" opacity=".8"/><circle cx="48" cy="28" r="5" fill="#c084fc" opacity=".8"/><circle cx="66" cy="28" r="5" fill="#818cf8" opacity=".8"/>
+<text x="850" y="32" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#6d5fa0">~/pedro-luiz <tspan fill="#a78bfa">main</tspan></text>
+
+<text x="440" y="100" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14" fill="#8b7fc0" letter-spacing="2">&lt;olá, mundo /&gt;  eu sou</text>
+<text x="440" y="152" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="52" font-weight="800" letter-spacing="8" fill="url(#name)">PEDRO LUIZ</text>
+<rect x="250" y="168" width="380" height="2" rx="1" fill="url(#rule)"/>
+
+<g font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="16" text-anchor="middle" fill="#c4b5fd">
+  <text class="rot r1" x="440" y="200"><tspan fill="#e879f9">&gt;</tspan> Desenvolvedor Back-End</text>
+  <text class="rot r2" x="440" y="200"><tspan fill="#e879f9">&gt;</tspan> Java · Spring Boot · MongoDB</text>
+  <text class="rot r3" x="440" y="200"><tspan fill="#e879f9">&gt;</tspan> Engenharia de Software · Fametro</text>
+</g>
+
+<rect x="314" y="214" width="252" height="30" rx="15" fill="#120c22" stroke="#3b2a6b"/>
+<circle class="pulse" cx="331" cy="229" r="5" fill="none" stroke="#a78bfa"/>
+<circle cx="331" cy="229" r="4.5" fill="#a78bfa"/>
+<text x="449" y="233.5" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#c4b5fd">aberto a estágio e júnior<tspan class="cur" fill="#e879f9"> _</tspan></text>
+<text x="850" y="252" text-anchor="end" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#5f548c">Manaus · AM · Brasil</text>
 </svg>
