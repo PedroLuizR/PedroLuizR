@@ -1,13 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="172" viewBox="0 0 420 172" role="img" aria-label="EcoHood · Front-End: Interface web do EcoHood consumindo a API do back-end.">
-<style>text{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}.ti{font-size:17px;font-weight:700;fill:#ede9fe}.d{font-size:13.5px;fill:#a89cd0}.tag{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;fill:#c4b5fd}.ar{animation:nudge 2.4s ease-in-out infinite}@keyframes nudge{50%{transform:translateX(4px)}}</style>
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1130"/><stop offset="1" stop-color="#0e0a19"/></linearGradient>
-<linearGradient id="b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#d946ef"/></linearGradient></defs>
-<rect x=".5" y=".5" width="419" height="171" rx="14" fill="url(#g)" stroke="#2e2350"/>
-<rect x="24" y="0" width="56" height="3" rx="1.5" fill="url(#b)"/>
-<text x="24" y="44" style="font-size:20px">🖥️</text>
-<text x="56" y="43" class="ti">EcoHood · Front-End</text>
-<g class="ar"><text x="392" y="43" text-anchor="end" style="font-size:16px;fill:#a78bfa">↗</text></g>
-<text x="24" y="80" class="d">Interface web do EcoHood consumindo</text>
-<text x="24" y="100" class="d">a API do back-end.</text>
-<rect x="24" y="128" width="96" height="24" rx="12" fill="#1e1538" stroke="#3b2a6b"/><text x="72.0" y="144" text-anchor="middle" class="tag">TypeScript</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="424" height="180" viewBox="0 0 424 180" role="img" aria-label="EcoHood · Front-End: Interface web do EcoHood, consumindo a API do back-end.">
+<style>
+text{font-family:'JetBrainsMono Nerd Font','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-weight:500;white-space:pre}
+.tab{font-size:11.5px}
+.f{opacity:0;animation:in .35s ease-out forwards}
+@keyframes in{to{opacity:1}}
+.cur{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+
+@media (prefers-reduced-motion:reduce){.f{animation:none;opacity:1}.cur{animation:none}}
+</style>
+<rect x=".5" y=".5" width="423" height="179" rx="10" fill="#14131c" stroke="#211e2e"/>
+<path d="M10.5 .5h403a10 10 0 0 1 10 10V34H.5V10.5a10 10 0 0 1 10-10z" fill="#100f16"/>
+<line x1="1" y1="34" x2="423" y2="34" stroke="#211e2e"/>
+<rect x="8" y="6" width="163" height="22" rx="4" fill="#a884e8"/><text x="20" y="21.5" class="tab" fill="#14131c" font-weight="700">1 ecohood-frontend/</text>
+<text x="22" y="70" font-size="17" font-weight="700" fill="#eae7f2" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">EcoHood · Front-End</text><text x="402" y="70" text-anchor="end" font-size="15" fill="#a884e8">↗</text><text x="22" y="98" font-size="13" fill="#cbc7da" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400">Interface web do EcoHood, consumindo</text><text x="22" y="118" font-size="13" fill="#cbc7da" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400">a API do back-end.</text><rect x="22" y="140" width="95" height="22" rx="4" fill="#23202f"/><text x="32" y="155" font-size="11.5" fill="#9db3f0">TypeScript</text>
 </svg>

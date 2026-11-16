@@ -1,0 +1,32 @@
+name: Cobrinha das contribuições
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # todo dia
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Gerar SVGs (paleta Violet Frost)
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-dark.svg?color_snake=#a884e8&color_dots=#1c1a26,#322c46,#5d4d8c,#8a6cc8,#c4a7ff&color_dot_border=#14131c
+            dist/snake-light.svg?color_snake=#7b5cc4&color_dots=#ebe9f2,#d5ccef,#b49af5,#8a6cc8,#5d4d8c
+
+      - name: Publicar no branch output
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
