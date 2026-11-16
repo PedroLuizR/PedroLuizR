@@ -73,35 +73,114 @@ def demo():
     return 53, celulas, 0
 
 
+DIRECOES = [(1, 0), (0, 1), (0, -1), (-1, 0)]  # direita, baixo, cima, esquerda
+
+
+Y_MIN, Y_MAX = -1, 7  # uma linha de folga acima e abaixo do gráfico
+
+
+def _dentro(p, semanas):
+    return -3 <= p[0] <= semanas + 1 and Y_MIN <= p[1] <= Y_MAX
+
+
+def _busca(inicio, direcao, alvos_ok, bloqueadas, semanas, por_posicao=True, max_alvos=8):
+    """BFS sobre (posição, direção): sem meia-volta e sem passar pelas células bloqueadas.
+    Com por_posicao, cada célula entra no trecho uma vez só (não cruza o próprio rastro).
+    Devolve até max_alvos trechos, do alvo mais perto para o mais longe."""
+    from collections import deque
+    fila = deque([(inicio, direcao)])
+    pai = {(inicio, direcao): None}
+    vistas = {inicio}
+    achados, trechos = set(), []
+    while fila and len(trechos) < max_alvos:
+        estado = fila.popleft()
+        pos, d = estado
+        if pos != inicio and pos in alvos_ok and pos not in achados:
+            achados.add(pos)
+            trecho, e = [], estado
+            while e is not None:
+                trecho.append(e[0])
+                e = pai[e]
+            trechos.append(trecho[::-1][1:])
+            continue  # não passa por cima de um alvo para chegar em outro
+        # seguir reto primeiro deixa o movimento mais suave
+        for nd in [d] + [x for x in DIRECOES if x != d]:
+            if nd == (-d[0], -d[1]):
+                continue  # meia-volta é proibida, como no jogo
+            np_ = (pos[0] + nd[0], pos[1] + nd[1])
+            if not _dentro(np_, semanas) or np_ in bloqueadas:
+                continue
+            e = (np_, nd)
+            if por_posicao:
+                if np_ in vistas:
+                    continue
+                vistas.add(np_)
+            if e not in pai:
+                pai[e] = estado
+                fila.append(e)
+    return trechos
+
+
+def _tem_saida(trilha, n_corpo, semanas):
+    """Depois de comer, a cabeça ainda alcança espaço livre suficiente para continuar?"""
+    corpo = set(trilha[-n_corpo:-1])
+    cabeca = trilha[-1]
+    vistos, pilha = {cabeca}, [cabeca]
+    precisa = n_corpo + 8
+    while pilha:
+        x, y = pilha.pop()
+        for dx, dy in DIRECOES:
+            q = (x + dx, y + dy)
+            if q not in vistos and q not in corpo and _dentro(q, semanas):
+                vistos.add(q)
+                if len(vistos) >= precisa:
+                    return True
+                pilha.append(q)
+    return False
+
+
 def caminho(semanas, celulas):
-    """Lista de posições (x, y), passo a passo, e o passo em que cada alvo é comido."""
+    """Lista de posições (x, y), passo a passo, o passo em que cada alvo é comido
+    e o comprimento da cobrinha depois de cada refeição."""
     alvos = {p for p, n in celulas.items() if n > 0}
-    pos = (-2, 3)
+    soma = sum(celulas[a] for a in alvos) or 1
+    fator = min(1.0, CRESC_MAX / soma)
+    comp = [COMP_INICIAL]
+    pos, direcao = (-2, 3), (1, 0)
     trilha = [pos]
-    comidos = []  # (indice_do_passo, celula)
+    comidos = []
     while alvos:
-        # mais próximo pela distância de Manhattan, olhando só uma janela de poucas semanas
-        # à frente da coluna mais à esquerda que falta, para não deixar nada para trás
+        # janela: só alvos a poucas semanas da coluna mais à esquerda que falta,
+        # para seguir da esquerda para a direita sem deixar nada para trás
         limite = min(a[0] for a in alvos) + 3
-        janela = [a for a in alvos if a[0] <= limite]
-        alvo = min(janela, key=lambda a: (abs(a[0] - pos[0]) + abs(a[1] - pos[1]), a[0], abs(a[1] - pos[1])))
-        x, y = pos
-        # alterna a ordem dos eixos para o movimento parecer mais natural
-        primeiro_vertical = len(comidos) % 2 == 1
-        eixos = ("y", "x") if primeiro_vertical else ("x", "y")
-        for eixo in eixos:
-            if eixo == "x":
-                while x != alvo[0]:
-                    x += 1 if alvo[0] > x else -1
-                    trilha.append((x, y))
-            else:
-                while y != alvo[1]:
-                    y += 1 if alvo[1] > y else -1
-                    trilha.append((x, y))
-        pos = (x, y)
-        alvos.discard(alvo)
-        comidos.append((len(trilha) - 1, alvo))
-    return trilha, comidos
+        janela = {a for a in alvos if a[0] <= limite}
+        # o corpo atual (sem a ponta do rabo, que vai andar) é obstáculo
+        n_corpo = int(comp[-1] + 0.999)
+        corpo = set(trilha[-n_corpo:-1]) if n_corpo > 1 else set()
+        trecho = None
+        for conjunto in (janela, alvos):
+            for t in _busca(pos, direcao, conjunto, corpo, semanas):
+                n_depois = int(comp[-1] + celulas[t[-1]] * fator + 0.999)
+                if _tem_saida(trilha + t, n_depois, semanas):
+                    trecho = t
+                    break
+            if trecho:
+                break
+        if not trecho:  # sem opção segura: aceita a melhor que houver
+            opcoes = (_busca(pos, direcao, alvos, corpo, semanas)
+                      or _busca(pos, direcao, alvos, corpo, semanas, por_posicao=False)
+                      or _busca(pos, direcao, alvos, set(), semanas, por_posicao=False))
+            if not opcoes:
+                break
+            trecho = opcoes[0]
+        for p in trecho:
+            direcao = (p[0] - trilha[-1][0], p[1] - trilha[-1][1])
+            trilha.append(p)
+        pos = trilha[-1]
+        alvos.discard(pos)
+        comidos.append((len(trilha) - 1, pos))
+        comp.append(comp[-1] + celulas[pos] * fator)
+    return trilha, comidos, comp
 
 
 def centro(p):
@@ -110,18 +189,15 @@ def centro(p):
 
 def gerar(semanas, celulas, tema):
     t = TEMAS[tema]
-    trilha, comidos = caminho(semanas, celulas)
-
-    # crescimento: proporcional ao nível do dia, limitado a CRESC_MAX
-    soma = sum(celulas[c] for _, c in comidos) or 1
-    fator = min(1.0, CRESC_MAX / soma)
-    comp = [COMP_INICIAL]
-    for _, c in comidos:
-        comp.append(comp[-1] + celulas[c] * fator)
+    trilha, comidos, comp = caminho(semanas, celulas)
     comp_final = comp[-1]
 
     # saída: segue para a direita até sumir por completo
     x, y = trilha[-1]
+    if len(trilha) > 1 and trilha[-1][0] < trilha[-2][0]:
+        # vinha para a esquerda: vira para cima ou para baixo antes, sem meia-volta
+        y += 1 if y < Y_MAX else -1
+        trilha.append((x, y))
     fim_x = semanas + 2 + int(comp_final) + 2
     while x < fim_x:
         x += 1
