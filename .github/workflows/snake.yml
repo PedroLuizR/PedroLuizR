@@ -1,4 +1,4 @@
-name: Cobrinha das contribuições
+name: Cobrinha e estatísticas
 
 on:
   schedule:
@@ -15,6 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Gerar cards de estatísticas
+        run: python3 scripts/stats.py "${{ github.repository_owner }}" dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Gerar SVGs (paleta Violet Frost)
         uses: Platane/snk/svg-only@v3
         with:

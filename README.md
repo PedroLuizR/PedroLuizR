@@ -53,8 +53,8 @@ Busco minha primeira oportunidade como **estagiário ou desenvolvedor júnior**.
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=PedroLuizR&show_icons=true&bg_color=14131c&border_color=211e2e&title_color=c4a7ff&icon_color=a884e8&text_color=cbc7da&ring_color=a884e8&locale=pt-br&rank_icon=github&border_radius=10" height="165" alt="Estatísticas do GitHub">
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=PedroLuizR&layout=compact&bg_color=14131c&border_color=211e2e&title_color=c4a7ff&text_color=cbc7da&locale=pt-br&langs_count=6&border_radius=10" height="165" alt="Linguagens mais usadas">
+<img src="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/stats.svg" width="49%" alt="Estatísticas do GitHub">
+<img src="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/langs.svg" width="49%" alt="Linguagens mais usadas">
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PedroLuizR/PedroLuizR/output/snake-dark.svg">
