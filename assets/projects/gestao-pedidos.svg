@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="424" height="180" viewBox="0 0 424 180" role="img" aria-label="Gestão de Pedidos: POO com herança, polimorfismo e exceções customizadas no ciclo do pedido.">
+<style>
+text{font-family:'JetBrainsMono Nerd Font','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-weight:500;white-space:pre}
+.tab{font-size:11.5px}
+.f{opacity:0;animation:in .35s ease-out forwards}
+@keyframes in{to{opacity:1}}
+.cur{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+
+@media (prefers-reduced-motion:reduce){.f{animation:none;opacity:1}.cur{animation:none}}
+</style>
+<rect x=".5" y=".5" width="423" height="179" rx="10" fill="#14131c" stroke="#211e2e"/>
+<path d="M10.5 .5h403a10 10 0 0 1 10 10V34H.5V10.5a10 10 0 0 1 10-10z" fill="#100f16"/>
+<line x1="1" y1="34" x2="423" y2="34" stroke="#211e2e"/>
+<rect x="8" y="6" width="285" height="22" rx="4" fill="#a884e8"/><text x="20" y="21.5" class="tab" fill="#14131c" font-weight="700">1 Sistema_de_Gestao_de_Pedidos.java</text>
+<text x="22" y="70" font-size="17" font-weight="700" fill="#eae7f2" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">Gestão de Pedidos</text><text x="402" y="70" text-anchor="end" font-size="15" fill="#a884e8">↗</text><text x="22" y="98" font-size="13" fill="#cbc7da" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400">POO com herança, polimorfismo e</text><text x="22" y="118" font-size="13" fill="#cbc7da" style="font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:400">exceções customizadas no ciclo do pedido.</text><rect x="22" y="140" width="50" height="22" rx="4" fill="#23202f"/><text x="32" y="155" font-size="11.5" fill="#a884e8">Java</text><rect x="79.0" y="140" width="42" height="22" rx="4" fill="#23202f"/><text x="89.0" y="155" font-size="11.5" fill="#6fb2c6">POO</text>
+</svg>

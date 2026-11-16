@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="44" viewBox="0 0 880 44" role="img" aria-label="Você aprende muito mais tentando.">
+<style>text{font-family:'JetBrainsMono Nerd Font','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-weight:500;font-size:12.5px;white-space:pre}</style>
+<rect x=".5" y=".5" width="879" height="43" rx="8" fill="#100f16" stroke="#211e2e"/>
+<rect x="1" y="1" width="78" height="42" rx="7" fill="#a884e8"/><rect x="60" y="1" width="20" height="42" fill="#a884e8"/>
+<text x="40" y="27" text-anchor="middle" fill="#14131c" font-weight="700">NORMAL</text>
+<text x="96" y="27" fill="#cbc7da">"Você aprende muito mais tentando."</text>
+<text x="860" y="27" text-anchor="end"><tspan fill="#736d92">utf-8 · </tspan><tspan fill="#78b8a4">main</tspan><tspan fill="#736d92"> · </tspan><tspan fill="#c4a7ff">violet-frost</tspan></text>
+</svg>
