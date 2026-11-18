@@ -3,7 +3,7 @@ import { Crosshair, Plus, Search, SlidersHorizontal, Star } from 'lucide-react-n
 import { useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions, type ScrollViewInstance } from 'react-native';
 import { AppHeader, Card, Chip, PrimaryButton, Screen, ScreenTitle, useToast } from '../../components';
-import { pet, petMapPosition, type Clinic } from '../../data/mock';
+import { pet, petCoords, petMapPosition, type Clinic } from '../../data/mock';
 import { useClinics } from '../../hooks';
 import { colors, radii, shadows, sizes, spacing, typography } from '../../theme/tokens';
 import { MapView } from './MapView';
@@ -46,6 +46,7 @@ export function MapScreen() {
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string>(allClinics[0].id);
   const carousel = useRef<ScrollViewInstance>(null);
+  const [recenterKey, setRecenterKey] = useState(0);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -73,7 +74,8 @@ export function MapScreen() {
             clinics={visible}
             selectedId={effectiveSelected}
             onSelect={select}
-            pet={{ name: pet.name, avatar: pet.avatar, position: petMapPosition }}
+            pet={{ name: pet.name, avatar: pet.avatar, position: petMapPosition, coords: petCoords }}
+            recenterKey={recenterKey}
           />
           <View style={styles.overlay} pointerEvents="box-none">
             <View style={styles.search}>
@@ -98,7 +100,10 @@ export function MapScreen() {
             </View>
           </View>
           <Pressable
-            onPress={() => toast.show(`Centralizado no ${pet.name}`)}
+            onPress={() => {
+              setRecenterKey((k) => k + 1);
+              toast.show(`Centralizado no ${pet.name}`);
+            }}
             accessibilityRole="button"
             accessibilityLabel="Centralizar na minha localização"
             style={styles.locate}

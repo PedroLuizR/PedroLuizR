@@ -27,6 +27,8 @@ export const collar = {
   lastSync: 'agora',
 };
 
+export type LatLng = { latitude: number; longitude: number };
+
 export type Clinic = {
   id: string;
   name: string;
@@ -37,16 +39,20 @@ export type Clinic = {
   is24h: boolean;
   /** Posição do pin no mapa ilustrado (0–1 relativo à largura/altura). */
   pin: { x: number; y: number };
+  /** Coordenadas reais (mock) para o Google Maps. */
+  coords: LatLng;
 };
 
 export const clinics: Clinic[] = [
-  { id: 'vetvida', name: 'Clínica VetVida', rating: 4.9, distanceM: 650, openUntil: '22h', vet: 'Dra. Luiza', is24h: false, pin: { x: 0.72, y: 0.74 } },
-  { id: 'c2', name: 'Pet Care Vila Mariana', rating: 4.7, distanceM: 900, openUntil: '24h', is24h: true, pin: { x: 0.2, y: 0.82 } },
-  { id: 'c3', name: 'Hospital Vet Ibirapuera', rating: 4.8, distanceM: 1200, openUntil: '20h', is24h: false, pin: { x: 0.84, y: 0.4 } },
+  { id: 'vetvida', name: 'Clínica VetVida', rating: 4.9, distanceM: 650, openUntil: '22h', vet: 'Dra. Luiza', is24h: false, pin: { x: 0.72, y: 0.74 }, coords: { latitude: -23.5893, longitude: -46.6352 } },
+  { id: 'c2', name: 'Pet Care Vila Mariana', rating: 4.7, distanceM: 900, openUntil: '24h', is24h: true, pin: { x: 0.2, y: 0.82 }, coords: { latitude: -23.5921, longitude: -46.6421 } },
+  { id: 'c3', name: 'Hospital Vet Ibirapuera', rating: 4.8, distanceM: 1200, openUntil: '20h', is24h: false, pin: { x: 0.84, y: 0.4 }, coords: { latitude: -23.5838, longitude: -46.6497 } },
 ];
 
 /** Posição do Bento no mapa ilustrado. */
 export const petMapPosition = { x: 0.36, y: 0.56 };
+/** Coordenadas do Bento (mock) — perto da R. França Pinto, Vila Mariana. */
+export const petCoords: LatLng = { latitude: -23.5869, longitude: -46.6398 };
 
 export type ClosetCategory = 'roupinhas' | 'acessorios';
 export type ClosetItemKind = 'moletom' | 'bandana' | 'capa';

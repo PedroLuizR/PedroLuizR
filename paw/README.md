@@ -43,5 +43,6 @@ assets/images/          bento_avatar.png, bento_closet.png, coleira_paw_one.png
 
 ## Notas
 - As imagens em `assets/images/` são **ilustrações provisórias**. Substitua pelos recortes do Figma mantendo os mesmos nomes.
-- O mapa é um SVG ilustrado isolado em `src/features/map/MapView.tsx`; para trocar por `react-native-maps`, mude só esse arquivo.
+- **Mapa:** no Android usa Google Maps (`src/features/map/MapView.native.tsx`, estilizado na paleta do app); na web, e no Android sem chave, usa o mapa ilustrado em SVG (`IllustratedMap.tsx`).
+  A chave **não fica no git**: crie `paw/.env.local` com `GOOGLE_MAPS_API_KEY=...` antes do `npx expo prebuild`. O `app.config.ts` lê essa variável.
 - O aviso “Não substitui o veterinário” fica fora da lista do chat da PAW IA, então está sempre visível.
