@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { aiChat, clinicChat, clinics, collar, pet, user, type ChatMessage } from '../data/mock';
+import * as Location from 'expo-location';
+import { Platform } from 'react-native';
+import { aiChat, clinicChat, clinics, collar, pet, petCoords, user, type ChatMessage, type Clinic, type LatLng } from '../data/mock';
+import { placesAvailable, searchNearbyVets } from '../services/places';
 import { sendMessage, type AiTurn } from '../services/ai';
 import { timing } from '../theme/tokens';
 
@@ -30,8 +33,70 @@ export function useCollar() {
   return collar;
 }
 
+/** Clínicas de exemplo (a VetVida é a clínica do chat de demonstração). */
 export function useClinics() {
   return clinics;
+}
+
+export type NearbyState = {
+  clinics: Clinic[];
+  origin: LatLng;
+  status: 'loading' | 'ready';
+  /** 'google' = clínicas reais; 'demo' = exemplos. */
+  source: 'google' | 'demo';
+  /** Por que estamos mostrando exemplos ou a localização padrão (para exibir na tela). */
+  notice?: string;
+};
+
+async function currentPosition(): Promise<{ origin: LatLng; notice?: string }> {
+  if (Platform.OS === 'web') return { origin: petCoords };
+  try {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') return { origin: petCoords, notice: 'Location permission denied — showing a default area.' };
+    const pos =
+      (await Location.getLastKnownPositionAsync({ maxAge: 5 * 60_000 })) ??
+      (await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced }));
+    return { origin: { latitude: pos.coords.latitude, longitude: pos.coords.longitude } };
+  } catch {
+    return { origin: petCoords, notice: 'Could not get your location — showing a default area.' };
+  }
+}
+
+/** Clínicas veterinárias reais por perto (Google Places), com reserva nos exemplos. */
+export function useNearbyClinics() {
+  const [state, setState] = useState<NearbyState>({ clinics, origin: petCoords, status: 'loading', source: 'demo' });
+  const [reloadKey, setReloadKey] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      if (!placesAvailable) {
+        if (!cancelled) setState({ clinics, origin: petCoords, status: 'ready', source: 'demo' });
+        return;
+      }
+      setState((s) => ({ ...s, status: 'loading' }));
+      const { origin, notice } = await currentPosition();
+      try {
+        const found = await searchNearbyVets(origin);
+        if (cancelled) return;
+        if (found.length === 0) {
+          setState({ clinics, origin, status: 'ready', source: 'demo', notice: 'No vet clinics found within 3 km — showing examples.' });
+        } else {
+          setState({ clinics: found, origin, status: 'ready', source: 'google', notice });
+        }
+      } catch (e) {
+        if (cancelled) return;
+        const msg = e instanceof Error ? e.message : String(e);
+        setState({ clinics, origin, status: 'ready', source: 'demo', notice: `Couldn't load real clinics (${msg}) — showing examples.` });
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [reloadKey]);
+
+  const reload = useCallback(() => setReloadKey((k) => k + 1), []);
+  return { ...state, reload };
 }
 
 let idCounter = 0;

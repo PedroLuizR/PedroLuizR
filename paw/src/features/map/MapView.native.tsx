@@ -30,7 +30,14 @@ function GoogleMap({ clinics, selectedId, onSelect, pet, recenterKey }: MapProps
   useEffect(() => {
     if (!selected) return;
     map.current?.fitToCoordinates([pet.coords, selected.coords], { edgePadding: FIT_PADDING, animated: true });
-  }, [selected, pet.coords]);
+  }, [selected?.id, pet.coords.latitude, pet.coords.longitude]);
+
+  // A localização real chega depois do primeiro render: move o mapa até ela.
+  useEffect(() => {
+    if (selected) return;
+    map.current?.animateToRegion({ ...pet.coords, latitudeDelta: DELTA, longitudeDelta: DELTA }, 400);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pet.coords.latitude, pet.coords.longitude]);
 
   useEffect(() => {
     if (recenterKey === undefined || recenterKey === 0) return;

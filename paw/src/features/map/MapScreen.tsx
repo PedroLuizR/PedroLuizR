@@ -1,10 +1,10 @@
 import { useRouter } from 'expo-router';
 import { Crosshair, Plus, Search, SlidersHorizontal, Star } from 'lucide-react-native';
 import { useMemo, useRef, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions, type ScrollViewInstance } from 'react-native';
+import { ActivityIndicator, Linking, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions, type ScrollViewInstance } from 'react-native';
 import { AppHeader, Card, Chip, PrimaryButton, Screen, ScreenTitle, useToast } from '../../components';
-import { pet, petCoords, petMapPosition, type Clinic } from '../../data/mock';
-import { useClinics } from '../../hooks';
+import { pet, petMapPosition, type Clinic } from '../../data/mock';
+import { useNearbyClinics } from '../../hooks';
 import { colors, radii, shadows, sizes, spacing, typography } from '../../theme/tokens';
 import { MapView } from './MapView';
 
@@ -13,7 +13,22 @@ type Filter = 'abertas' | '24h';
 const formatDistance = (m: number) => (m < 1000 ? `${m} m` : `${(m / 1000).toFixed(1)} km`);
 const formatRating = (r: number) => r.toFixed(1);
 
+function openDirections(c: Clinic) {
+  const { latitude, longitude } = c.coords;
+  const placeParam = c.source === 'google' ? `&destination_place_id=${encodeURIComponent(c.id)}` : '';
+  Linking.openURL(`https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}${placeParam}`).catch(() => {});
+}
+
+function callClinic(phone: string) {
+  Linking.openURL(`tel:${phone.replace(/[^+\d]/g, '')}`).catch(() => {});
+}
+
 function ClinicCard({ clinic, width, onChat }: { clinic: Clinic; width: number; onChat: () => void }) {
+  const meta = [
+    clinic.rating !== null ? formatRating(clinic.rating) : null,
+    formatDistance(clinic.distanceM),
+    clinic.hoursLabel,
+  ].filter(Boolean);
   return (
     <Card style={[styles.clinicCard, { width }]}>
       <View style={styles.clinicRow}>
@@ -25,32 +40,57 @@ function ClinicCard({ clinic, width, onChat }: { clinic: Clinic; width: number; 
             {clinic.name}
           </Text>
           <View style={styles.meta}>
-            <Star size={sizes.iconXs} color={colors.moodIcon} fill={colors.moodIcon} strokeWidth={sizes.iconStroke} />
-            <Text style={[typography.caption, { color: colors.textSecondary }]}>
-              {formatRating(clinic.rating)} · {formatDistance(clinic.distanceM)} · {clinic.is24h ? 'Open 24 hours' : `Open until ${clinic.openUntil}`}
+            {clinic.rating !== null ? (
+              <Star size={sizes.iconXs} color={colors.moodIcon} fill={colors.moodIcon} strokeWidth={sizes.iconStroke} />
+            ) : null}
+            <Text style={[typography.caption, styles.flex, { color: colors.textSecondary }]} numberOfLines={1}>
+              {meta.join(' · ')}
             </Text>
           </View>
+          {clinic.address ? (
+            <Text style={[typography.caption, { color: colors.textMuted }]} numberOfLines={1}>
+              {clinic.address}
+            </Text>
+          ) : null}
         </View>
       </View>
-      <PrimaryButton label="Chat with the clinic" icon="arrow" onPress={onChat} style={styles.clinicBtn} />
+      {clinic.source === 'demo' ? (
+        <PrimaryButton label="Chat with the clinic" icon="arrow" onPress={onChat} style={styles.clinicBtn} />
+      ) : (
+        <View style={styles.actions}>
+          <PrimaryButton
+            label="Call"
+            icon="phone"
+            disabled={!clinic.phone}
+            onPress={() => clinic.phone && callClinic(clinic.phone)}
+            style={styles.flex}
+          />
+          <PrimaryButton label="Directions" icon="route" variant="outline" onPress={() => openDirections(clinic)} style={styles.flex} />
+        </View>
+      )}
     </Card>
   );
 }
 
 export function MapScreen() {
   const router = useRouter();
-  const allClinics = useClinics();
+  const nearby = useNearbyClinics();
+  const allClinics = nearby.clinics;
   const toast = useToast();
   const { width: screenW } = useWindowDimensions();
   const [filter, setFilter] = useState<Filter>('abertas');
   const [query, setQuery] = useState('');
-  const [selectedId, setSelectedId] = useState<string>(allClinics[0].id);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const carousel = useRef<ScrollViewInstance>(null);
   const [recenterKey, setRecenterKey] = useState(0);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return allClinics.filter((c) => (filter === '24h' ? c.is24h : true) && (!q || c.name.toLowerCase().includes(q)));
+    return allClinics.filter(
+      (c) =>
+        (filter === '24h' ? c.is24h : c.openNow !== false) &&
+        (!q || c.name.toLowerCase().includes(q) || (c.address ?? '').toLowerCase().includes(q)),
+    );
   }, [allClinics, filter, query]);
 
   const cardW = screenW - spacing.screen * 2;
@@ -74,7 +114,7 @@ export function MapScreen() {
             clinics={visible}
             selectedId={effectiveSelected}
             onSelect={select}
-            pet={{ name: pet.name, avatar: pet.avatar, position: petMapPosition, coords: petCoords }}
+            pet={{ name: pet.name, avatar: pet.avatar, position: petMapPosition, coords: nearby.origin }}
             recenterKey={recenterKey}
           />
           <View style={styles.overlay} pointerEvents="box-none">
@@ -112,9 +152,23 @@ export function MapScreen() {
           </Pressable>
         </View>
 
-        <Text style={[typography.h2, styles.sectionTitle, { color: colors.textPrimary }]}>
-          {visible.length} {visible.length === 1 ? 'clinic' : 'clinics'} near you
-        </Text>
+        <View style={styles.sectionHeader}>
+          <Text style={[typography.h2, styles.flex, { color: colors.textPrimary }]}>
+            {nearby.status === 'loading' ? 'Finding clinics…' : `${visible.length} ${visible.length === 1 ? 'clinic' : 'clinics'} near you`}
+          </Text>
+          {nearby.status === 'loading' ? (
+            <ActivityIndicator color={colors.primary} />
+          ) : (
+            <Text style={[typography.caption, { color: colors.textMuted }]}>
+              {nearby.source === 'google' ? 'Live from Google' : 'Sample clinics'}
+            </Text>
+          )}
+        </View>
+        {nearby.notice ? (
+          <Pressable onPress={nearby.reload} accessibilityRole="button" accessibilityLabel="Retry loading clinics" style={styles.notice}>
+            <Text style={[typography.caption, { color: colors.textSecondary }]}>{nearby.notice} Tap to retry.</Text>
+          </Pressable>
+        ) : null}
 
         {visible.length === 0 ? (
           <Text style={[typography.body, { color: colors.textSecondary }]}>No clinics match these filters.</Text>
@@ -172,7 +226,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     ...shadows.float,
   },
-  sectionTitle: { marginTop: spacing.xxl, marginBottom: spacing.lg },
+  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, marginTop: spacing.xxl, marginBottom: spacing.lg },
+  notice: { backgroundColor: colors.surfaceLavender, borderRadius: radii.sm, padding: spacing.md, marginBottom: spacing.lg },
+  actions: { flexDirection: 'row', gap: spacing.sm },
   carousel: { marginHorizontal: -spacing.screen },
   carouselContent: { paddingHorizontal: spacing.screen, gap: spacing.md, paddingBottom: spacing.xs },
   clinicCard: { gap: spacing.lg },

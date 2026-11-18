@@ -32,21 +32,30 @@ export type LatLng = { latitude: number; longitude: number };
 export type Clinic = {
   id: string;
   name: string;
-  rating: number;
+  /** null quando o Google não tem avaliações. */
+  rating: number | null;
+  ratingCount?: number;
   distanceM: number;
-  openUntil: string;
-  vet?: string;
+  /** Texto do horário, ex.: "Open until 10 PM", "Closed now". */
+  hoursLabel: string;
+  /** undefined = horário desconhecido. */
+  openNow?: boolean;
   is24h: boolean;
+  vet?: string;
+  phone?: string;
+  address?: string;
   /** Posição do pin no mapa ilustrado (0–1 relativo à largura/altura). */
   pin: { x: number; y: number };
-  /** Coordenadas reais (mock) para o Google Maps. */
   coords: LatLng;
+  /** 'demo' = clínica fictícia com chat; 'google' = clínica real (Places API). */
+  source: 'demo' | 'google';
 };
 
+/** Clínicas de exemplo: usadas na web, sem chave ou se a busca real falhar. */
 export const clinics: Clinic[] = [
-  { id: 'vetvida', name: 'VetVida Clinic', rating: 4.9, distanceM: 650, openUntil: '10 PM', vet: 'Dr. Luiza', is24h: false, pin: { x: 0.72, y: 0.74 }, coords: { latitude: -23.5893, longitude: -46.6352 } },
-  { id: 'c2', name: 'Pet Care Vila Mariana', rating: 4.7, distanceM: 900, openUntil: '24 hours', is24h: true, pin: { x: 0.2, y: 0.82 }, coords: { latitude: -23.5921, longitude: -46.6421 } },
-  { id: 'c3', name: 'Ibirapuera Vet Hospital', rating: 4.8, distanceM: 1200, openUntil: '8 PM', is24h: false, pin: { x: 0.84, y: 0.4 }, coords: { latitude: -23.5838, longitude: -46.6497 } },
+  { id: 'vetvida', name: 'VetVida Clinic', rating: 4.9, distanceM: 650, hoursLabel: 'Open until 10 PM', openNow: true, vet: 'Dr. Luiza', is24h: false, pin: { x: 0.72, y: 0.74 }, coords: { latitude: -23.5893, longitude: -46.6352 }, source: 'demo' },
+  { id: 'c2', name: 'Pet Care Vila Mariana', rating: 4.7, distanceM: 900, hoursLabel: 'Open 24 hours', openNow: true, is24h: true, pin: { x: 0.2, y: 0.82 }, coords: { latitude: -23.5921, longitude: -46.6421 }, source: 'demo' },
+  { id: 'c3', name: 'Ibirapuera Vet Hospital', rating: 4.8, distanceM: 1200, hoursLabel: 'Open until 8 PM', openNow: true, is24h: false, pin: { x: 0.84, y: 0.4 }, coords: { latitude: -23.5838, longitude: -46.6497 }, source: 'demo' },
 ];
 
 /** Posição do Bento no mapa ilustrado. */

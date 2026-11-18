@@ -151,7 +151,8 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   outgoing: { alignSelf: 'flex-end', backgroundColor: colors.primary, borderTopRightRadius: spacing.xs + spacing.xxs },
-  summary: { alignSelf: 'flex-end', backgroundColor: colors.surfaceLavender, gap: spacing.sm },
+  // Largura fixa: sem ela o card encolhe e o texto se sobrepõe com fonte grande.
+  summary: { alignSelf: 'flex-end', width: sizes.chatMaxWidth, backgroundColor: colors.surfaceLavender, gap: spacing.sm },
   summaryRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md - spacing.xxs },
   summaryIcon: {
     width: sizes.iconTile - spacing.sm,

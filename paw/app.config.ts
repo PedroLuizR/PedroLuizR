@@ -12,6 +12,9 @@ const PROGUARD_RULES = [
   '-dontwarn androidx.work.**',
 ].join('\n');
 
+/** SHA-1 da chave de debug que assina o APK hoje (troque ao usar uma keystore própria). */
+const DEBUG_CERT_SHA1 = '5E8F16062EA3CD2C4A0D547876BAA6F38CABF625';
+
 export default ({ config }: ConfigContext): ExpoConfig => {
   const mapsKey = process.env.GOOGLE_MAPS_API_KEY;
   return {
@@ -22,7 +25,19 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       // O Google Maps traz o WorkManager (que usa Room por reflexão). Sem estas
       // regras o R8 do build release remove o WorkDatabase_Impl e o app fecha ao abrir.
       ['expo-build-properties', { android: { extraProguardRules: PROGUARD_RULES } }],
+      [
+        'expo-location',
+        { locationWhenInUsePermission: 'PAW uses your location to find vet clinics near you and Bento.' },
+      ],
     ],
-    extra: { ...config.extra, hasGoogleMaps: Boolean(mapsKey) },
+    extra: {
+      ...config.extra,
+      hasGoogleMaps: Boolean(mapsKey),
+      // Usada pela Places API (clínicas reais). Chaves restritas a app Android
+      // exigem o pacote + SHA-1 do certificado que assinou o APK.
+      googleApiKey: mapsKey ?? null,
+      androidPackage: config.android?.package ?? null,
+      androidCertSha1: process.env.ANDROID_CERT_SHA1 ?? DEBUG_CERT_SHA1,
+    },
   };
 };
