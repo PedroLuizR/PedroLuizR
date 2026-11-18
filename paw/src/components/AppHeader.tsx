@@ -13,9 +13,9 @@ type Props = {
 
 const ACTION_ICON = { bell: Bell, more: MoreHorizontal, plus: Plus } as const;
 const ACTION_LABEL: Record<Action, string> = {
-  bell: 'Notificações',
-  more: 'Mais opções',
-  plus: 'Nova conversa',
+  bell: 'Notifications',
+  more: 'More options',
+  plus: 'New conversation',
 };
 
 export function AppHeader({ badge = 'live', action = 'more', onAction }: Props) {
@@ -29,7 +29,7 @@ export function AppHeader({ badge = 'live', action = 'more', onAction }: Props) 
         </Text>
         <Badge
           overline
-          label={isAi ? 'Inteligência IA' : 'Ao vivo'}
+          label={isAi ? 'AI assistant' : 'Live'}
           bg={isAi ? colors.accent : colors.surfaceLavender}
           dotColor={isAi ? colors.textPrimary : colors.primary}
           textColor={isAi ? colors.textPrimary : colors.primary}

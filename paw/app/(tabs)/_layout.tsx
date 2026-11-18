@@ -8,12 +8,12 @@ export default function TabsLayout() {
       tabBar={(props) => <BottomTabBar {...props} />}
       screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: colors.background } }}
     >
-      <Tabs.Screen name="index" options={{ title: 'Início' }} />
-      <Tabs.Screen name="mapa" options={{ title: 'Mapa' }} />
-      <Tabs.Screen name="clinica" options={{ title: 'Clínica' }} />
+      <Tabs.Screen name="index" options={{ title: 'Home' }} />
+      <Tabs.Screen name="map" options={{ title: 'Map' }} />
+      <Tabs.Screen name="clinic" options={{ title: 'Clinic' }} />
       <Tabs.Screen name="closet" options={{ title: 'Closet' }} />
-      <Tabs.Screen name="coleira" options={{ title: 'Coleira' }} />
-      <Tabs.Screen name="ia" options={{ title: 'PAW IA' }} />
+      <Tabs.Screen name="collar" options={{ title: 'Collar' }} />
+      <Tabs.Screen name="ai" options={{ title: 'PAW AI' }} />
     </Tabs>
   );
 }

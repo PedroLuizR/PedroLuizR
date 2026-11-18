@@ -7,7 +7,7 @@ import { colors, radii, spacing, typography } from '../../theme/tokens';
 function Disclaimer() {
   return (
     <View style={styles.disclaimer} accessibilityRole="alert">
-      <Text style={[typography.captionMedium, { color: colors.primary }]}>✦ Orientação inicial. Não substitui o veterinário.</Text>
+      <Text style={[typography.captionMedium, { color: colors.primary }]}>✦ Initial guidance only. Not a substitute for a vet.</Text>
     </View>
   );
 }
@@ -21,7 +21,7 @@ export function AiScreen() {
       {/* Cabeçalho e aviso ficam fixos fora da lista: o aviso é sempre visível. */}
       <View style={styles.top}>
         <AppHeader badge="ai" action="plus" onAction={chat.reset} />
-        <ScreenTitle title="Converse com a PAW" subtitle="Uma ajuda para entender os sinais." />
+        <ScreenTitle title="Talk to PAW" subtitle="Help to make sense of the signs." />
         <Disclaimer />
       </View>
       <ChatList
@@ -29,8 +29,8 @@ export function AiScreen() {
         messages={chat.messages}
         typing={chat.typing}
         onSend={chat.send}
-        placeholder="Conte mais sobre o Bento…"
-        onCta={() => router.navigate('/clinica')}
+        placeholder="Tell me more about Bento…"
+        onCta={() => router.navigate('/clinic')}
       />
     </Screen>
   );

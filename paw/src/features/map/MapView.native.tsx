@@ -48,7 +48,7 @@ function GoogleMap({ clinics, selectedId, onSelect, pet, recenterKey }: MapProps
         toolbarEnabled={false}
         showsCompass={false}
         showsPointsOfInterests={false}
-        accessibilityLabel="Mapa de clínicas por perto"
+        accessibilityLabel="Map of nearby clinics"
       >
         {selected ? (
           <Polyline coordinates={approxRoute(pet.coords, selected.coords)} strokeColor={colors.mapRoute} strokeWidth={4} lineDashPattern={[2, 8]} />
@@ -68,7 +68,7 @@ function GoogleMap({ clinics, selectedId, onSelect, pet, recenterKey }: MapProps
         <Marker coordinate={pet.coords} anchor={{ x: 0.5, y: 0.78 }} zIndex={10}>
           <View style={styles.petWrap}>
             <View style={styles.balloon}>
-              <Text style={[typography.captionMedium, { color: colors.textPrimary }]}>{pet.name} está com você</Text>
+              <Text style={[typography.captionMedium, { color: colors.textPrimary }]}>{pet.name} is with you</Text>
             </View>
             <View style={styles.halo}>
               <Image source={pet.avatar} style={styles.petAvatar} />

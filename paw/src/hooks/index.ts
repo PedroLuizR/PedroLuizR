@@ -9,9 +9,9 @@ export function useUser() {
 
 export function greetingFor(date = new Date()): string {
   const h = date.getHours();
-  if (h >= 5 && h < 12) return 'Bom dia';
-  if (h >= 12 && h < 18) return 'Boa tarde';
-  return 'Boa noite';
+  if (h >= 5 && h < 12) return 'Good morning';
+  if (h >= 12 && h < 18) return 'Good afternoon';
+  return 'Good evening';
 }
 
 /** Dados do pet com batimento "ao vivo" (varia entre 82 e 90). */

@@ -62,9 +62,9 @@ export function IllustratedMap({ clinics, selectedId, onSelect, pet }: MapProps)
       ) : null}
 
       {/* Rótulos */}
-      <Text style={[styles.label, { left: X(0.66), top: Y(0.3) }]}>Parque Ibirapuera</Text>
+      <Text style={[styles.label, { left: X(0.66), top: Y(0.3) }]}>Ibirapuera Park</Text>
       <Text style={[styles.label, styles.district, { left: X(0.06), top: Y(0.34) }]}>VILA MARIANA</Text>
-      <Text style={[styles.label, { left: X(0.44), top: Y(0.9), transform: [{ rotate: '-14deg' }] }]}>R. França Pinto</Text>
+      <Text style={[styles.label, { left: X(0.44), top: Y(0.9), transform: [{ rotate: '-14deg' }] }]}>França Pinto St.</Text>
 
       {/* Pins de clínica */}
       {w > 0 &&
@@ -75,7 +75,7 @@ export function IllustratedMap({ clinics, selectedId, onSelect, pet }: MapProps)
               key={c.id}
               onPress={() => onSelect(c.id)}
               accessibilityRole="button"
-              accessibilityLabel={`Selecionar ${c.name}`}
+              accessibilityLabel={`Select ${c.name}`}
               hitSlop={spacing.sm}
               style={[
                 styles.clinicPin,
@@ -95,10 +95,10 @@ export function IllustratedMap({ clinics, selectedId, onSelect, pet }: MapProps)
           style={[styles.petWrap, { left: X(pet.position.x) - PET_WRAP_W / 2, top: Y(pet.position.y) - HALO / 2 - BALLOON_OFFSET }]}
         >
           <View style={styles.balloon}>
-            <Text style={[typography.captionMedium, { color: colors.textPrimary }]}>{pet.name} está com você</Text>
+            <Text style={[typography.captionMedium, { color: colors.textPrimary }]}>{pet.name} is with you</Text>
           </View>
           <View style={styles.halo}>
-            <Image source={pet.avatar} style={styles.petAvatar} accessibilityLabel={`${pet.name} no mapa`} />
+            <Image source={pet.avatar} style={styles.petAvatar} accessibilityLabel={`${pet.name} on the map`} />
           </View>
         </View>
       ) : null}

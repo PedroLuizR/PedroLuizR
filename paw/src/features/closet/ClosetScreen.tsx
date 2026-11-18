@@ -8,9 +8,9 @@ import { ClothingIcon } from './ClothingIcon';
 
 type Filter = 'todos' | ClosetCategory;
 const FILTERS: { id: Filter; label: string }[] = [
-  { id: 'todos', label: 'Todos' },
-  { id: 'roupinhas', label: 'Roupinhas' },
-  { id: 'acessorios', label: 'Acessórios' },
+  { id: 'todos', label: 'All' },
+  { id: 'roupinhas', label: 'Clothes' },
+  { id: 'acessorios', label: 'Accessories' },
 ];
 
 export function ClosetScreen() {
@@ -26,16 +26,16 @@ export function ClosetScreen() {
   return (
     <View style={styles.flex}>
       <Screen>
-        <AppHeader onAction={() => toast.show('Mais opções em breve')} />
-        <ScreenTitle title={`O estilo do ${pet.name}`} subtitle="Um look para cada aventura." />
+        <AppHeader onAction={() => toast.show('More options coming soon')} />
+        <ScreenTitle title={`${pet.name}'s style`} subtitle="A look for every adventure." />
 
         <Card variant="cream" size="lg" style={styles.preview}>
-          <Image source={pet.closetPhoto} style={styles.photo} resizeMode="cover" accessibilityLabel={`${pet.name} vestindo ${appliedItem?.name ?? 'o look'}`} />
-          <Badge label="Look equipado" bg={colors.surface} dotColor={colors.accent} />
+          <Image source={pet.closetPhoto} style={styles.photo} resizeMode="cover" accessibilityLabel={`${pet.name} wearing the ${appliedItem?.name.toLowerCase() ?? 'outfit'}`} />
+          <Badge label="Outfit on" bg={colors.surface} dotColor={colors.accent} />
           <Pressable
-            onPress={() => toast.show('Visualização 360° em breve')}
+            onPress={() => toast.show('360° view coming soon')}
             accessibilityRole="button"
-            accessibilityLabel="Ver em 360 graus"
+            accessibilityLabel="View in 360 degrees"
             style={styles.rotate}
           >
             <RotateCw size={sizes.iconSm} color={colors.textPrimary} strokeWidth={sizes.iconStroke} />
@@ -44,8 +44,8 @@ export function ClosetScreen() {
         </Card>
 
         <View style={styles.sectionHeader}>
-          <Text style={[typography.h2, { color: colors.textPrimary }]}>Guarda-roupa virtual</Text>
-          <Text style={[typography.caption, { color: colors.textMuted }]}>{items.length} {items.length === 1 ? 'item' : 'itens'}</Text>
+          <Text style={[typography.h2, { color: colors.textPrimary }]}>Virtual wardrobe</Text>
+          <Text style={[typography.caption, { color: colors.textMuted }]}>{items.length} {items.length === 1 ? 'item' : 'items'}</Text>
         </View>
 
         <View style={styles.chips}>
@@ -82,7 +82,7 @@ export function ClosetScreen() {
         </ScrollView>
 
         <PrimaryButton
-          label={isApplied ? `Look aplicado no ${pet.name}` : 'Aplicar look'}
+          label={isApplied ? `Outfit applied to ${pet.name}` : 'Apply outfit'}
           icon={isApplied ? 'check' : undefined}
           onPress={() => setApplied(selected)}
           style={styles.cta}

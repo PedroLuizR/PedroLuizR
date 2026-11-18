@@ -58,8 +58,8 @@ export function ChatMessageView({ message, onCta }: { message: ChatMessage; onCt
 
 function TypingIndicator() {
   return (
-    <View style={[styles.bubble, styles.incoming]} accessibilityLabel="Digitando">
-      <Text style={[typography.caption, { color: colors.textMuted }]}>digitando…</Text>
+    <View style={[styles.bubble, styles.incoming]} accessibilityLabel="Typing">
+      <Text style={[typography.caption, { color: colors.textMuted }]}>typing…</Text>
     </View>
   );
 }
@@ -74,7 +74,7 @@ export function ChatInput({ placeholder, onSend, attach = false }: { placeholder
   return (
     <View style={styles.inputBar}>
       {attach ? (
-        <Pressable accessibilityRole="button" accessibilityLabel="Anexar arquivo" style={styles.attach} hitSlop={spacing.xs}>
+        <Pressable accessibilityRole="button" accessibilityLabel="Attach file" style={styles.attach} hitSlop={spacing.xs}>
           <Paperclip size={sizes.icon} color={colors.textMuted} strokeWidth={sizes.iconStroke} />
         </Pressable>
       ) : null}
@@ -91,7 +91,7 @@ export function ChatInput({ placeholder, onSend, attach = false }: { placeholder
       <Pressable
         onPress={submit}
         accessibilityRole="button"
-        accessibilityLabel="Enviar mensagem"
+        accessibilityLabel="Send message"
         style={({ pressed }) => [styles.send, pressed && styles.pressed]}
       >
         <SendHorizontal size={sizes.iconSm + 2} color={colors.textOnColor} strokeWidth={2} />

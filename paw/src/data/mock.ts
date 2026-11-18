@@ -9,22 +9,22 @@ export const pet = {
   avatar: require('../../assets/images/bento_avatar.png') as ImageSourcePropType,
   closetPhoto: require('../../assets/images/bento_closet.png') as ImageSourcePropType,
   heartRate: 86,
-  heartState: 'Em repouso · normal',
-  health: { title: 'Tudo em dia', note: 'Sinais estáveis' },
-  mood: { title: 'Feliz e tranquilo', note: 'Um ótimo dia por aqui' },
+  heartState: 'Resting · normal',
+  health: { title: 'All good', note: 'Stable vitals' },
+  mood: { title: 'Happy and calm', note: 'A great day so far' },
 };
 
 export const collar = {
   model: 'PAW One',
-  kind: 'Coleira inteligente',
+  kind: 'Smart collar',
   photo: require('../../assets/images/coleira_paw_one.png') as ImageSourcePropType,
   battery: 82,
   autonomyDays: 4,
   usageToday: '8h 32min',
-  status: 'Em uso',
+  status: 'In use',
   firmware: 'v2.4.1',
   bluetooth: true,
-  lastSync: 'agora',
+  lastSync: 'just now',
 };
 
 export type LatLng = { latitude: number; longitude: number };
@@ -44,9 +44,9 @@ export type Clinic = {
 };
 
 export const clinics: Clinic[] = [
-  { id: 'vetvida', name: 'Clínica VetVida', rating: 4.9, distanceM: 650, openUntil: '22h', vet: 'Dra. Luiza', is24h: false, pin: { x: 0.72, y: 0.74 }, coords: { latitude: -23.5893, longitude: -46.6352 } },
-  { id: 'c2', name: 'Pet Care Vila Mariana', rating: 4.7, distanceM: 900, openUntil: '24h', is24h: true, pin: { x: 0.2, y: 0.82 }, coords: { latitude: -23.5921, longitude: -46.6421 } },
-  { id: 'c3', name: 'Hospital Vet Ibirapuera', rating: 4.8, distanceM: 1200, openUntil: '20h', is24h: false, pin: { x: 0.84, y: 0.4 }, coords: { latitude: -23.5838, longitude: -46.6497 } },
+  { id: 'vetvida', name: 'VetVida Clinic', rating: 4.9, distanceM: 650, openUntil: '10 PM', vet: 'Dr. Luiza', is24h: false, pin: { x: 0.72, y: 0.74 }, coords: { latitude: -23.5893, longitude: -46.6352 } },
+  { id: 'c2', name: 'Pet Care Vila Mariana', rating: 4.7, distanceM: 900, openUntil: '24 hours', is24h: true, pin: { x: 0.2, y: 0.82 }, coords: { latitude: -23.5921, longitude: -46.6421 } },
+  { id: 'c3', name: 'Ibirapuera Vet Hospital', rating: 4.8, distanceM: 1200, openUntil: '8 PM', is24h: false, pin: { x: 0.84, y: 0.4 }, coords: { latitude: -23.5838, longitude: -46.6497 } },
 ];
 
 /** Posição do Bento no mapa ilustrado. */
@@ -66,9 +66,9 @@ export type ClosetItem = {
 };
 
 export const closetItems: ClosetItem[] = [
-  { id: 'moletom', name: 'Moletom', color: 'Verde sálvia', swatch: 'sageGreen', category: 'roupinhas' },
-  { id: 'bandana', name: 'Bandana', color: 'Raio de sol', swatch: 'sunYellow', category: 'acessorios' },
-  { id: 'capa', name: 'Capa de chuva', color: 'Terracota', swatch: 'terracotta', category: 'roupinhas' },
+  { id: 'moletom', name: 'Hoodie', color: 'Sage green', swatch: 'sageGreen', category: 'roupinhas' },
+  { id: 'bandana', name: 'Bandana', color: 'Sunbeam', swatch: 'sunYellow', category: 'acessorios' },
+  { id: 'capa', name: 'Raincoat', color: 'Terracotta', swatch: 'terracotta', category: 'roupinhas' },
 ];
 
 export type ChatMessage =
@@ -77,35 +77,35 @@ export type ChatMessage =
   | { id: string; kind: 'analysis'; from: 'them'; title: string; text: string; advice: string; cta: string };
 
 export const clinicChat = {
-  dateLabel: 'Hoje, 10:42',
+  dateLabel: 'Today, 10:42 AM',
   messages: [
-    { id: 'c1', kind: 'text', from: 'them', text: 'Olá, Marina! Sou a Dra. Luiza, da VetVida. Como posso ajudar você e o Bento hoje?' },
-    { id: 'c2', kind: 'text', from: 'me', text: 'Oi, doutora! O Bento coçou bastante a orelha hoje. Posso levar ele para uma avaliação?' },
-    { id: 'c3', kind: 'petSummary', from: 'me', title: 'Resumo do Bento', detail: '86 bpm · Sinais estáveis', caption: 'Dados da coleira compartilhados às 10:44' },
-    { id: 'c4', kind: 'text', from: 'them', text: 'Claro! Temos um horário às 14h30. Até lá, evite colocar produtos na orelha sem avaliação.' },
+    { id: 'c1', kind: 'text', from: 'them', text: 'Hi, Marina! I\'m Dr. Luiza from VetVida. How can I help you and Bento today?' },
+    { id: 'c2', kind: 'text', from: 'me', text: 'Hi, doctor! Bento has been scratching his ear a lot today. Can I bring him in for a check-up?' },
+    { id: 'c3', kind: 'petSummary', from: 'me', title: 'Bento\'s summary', detail: '86 bpm · Stable vitals', caption: 'Collar data shared at 10:44 AM' },
+    { id: 'c4', kind: 'text', from: 'them', text: 'Of course! We have a slot at 2:30 PM. Until then, avoid putting anything in his ear before he\'s examined.' },
   ] as ChatMessage[],
   replies: [
-    'Anotado! Vou deixar registrado no prontuário do Bento.',
-    'Perfeito. Qualquer mudança, me avise por aqui.',
-    'Combinado! Te esperamos às 14h30.',
+    'Noted! I\'ll add it to Bento\'s record.',
+    'Perfect. If anything changes, let me know here.',
+    'Great! See you at 2:30 PM.',
   ],
 };
 
 export const aiChat = {
   messages: [
-    { id: 'a1', kind: 'text', from: 'them', text: 'Oi, Marina! Vamos entender a coceira do Bento. Há quanto tempo começou? É em uma ou nas duas orelhas?' },
-    { id: 'a2', kind: 'text', from: 'me', text: 'Começou hoje, só na orelha direita.' },
-    { id: 'a3', kind: 'text', from: 'them', text: 'Ele balança a cabeça? Tem secreção, cheiro forte ou sente dor ao tocar?' },
-    { id: 'a4', kind: 'text', from: 'me', text: 'Balança a cabeça, mas não notei secreção nem dor.' },
+    { id: 'a1', kind: 'text', from: 'them', text: 'Hi, Marina! Let\'s look into Bento\'s itching. When did it start? Is it one ear or both?' },
+    { id: 'a2', kind: 'text', from: 'me', text: 'It started today, only in the right ear.' },
+    { id: 'a3', kind: 'text', from: 'them', text: 'Is he shaking his head? Any discharge, strong smell, or pain when touched?' },
+    { id: 'a4', kind: 'text', from: 'me', text: 'He shakes his head, but I haven\'t noticed discharge or pain.' },
     {
       id: 'a5',
       kind: 'analysis',
       from: 'them',
-      title: 'O que esses sinais podem indicar',
-      text: 'Pode ser irritação ou otite, entre outras causas. Só um exame veterinário confirma.',
-      advice: 'Não aplique produtos. Procure avaliação; se houver dor intensa, perda de equilíbrio ou piora, busque atendimento imediato.',
-      cta: 'Falar com a VetVida',
+      title: 'What these signs may mean',
+      text: 'It could be irritation or an ear infection, among other causes. Only a vet exam can confirm.',
+      advice: 'Don\'t apply any products. Get him checked; if there\'s severe pain, loss of balance or it gets worse, seek care right away.',
+      cta: 'Talk to VetVida',
     },
   ] as ChatMessage[],
-  greeting: 'Oi, Marina! Como o Bento está hoje? Me conte o que você notou.',
+  greeting: 'Hi, Marina! How is Bento today? Tell me what you\'ve noticed.',
 };

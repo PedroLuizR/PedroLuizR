@@ -3,9 +3,9 @@ import { timing } from '../theme/tokens';
 export type AiTurn = { role: 'user' | 'assistant'; content: string };
 
 const MOCK_REPLIES = [
-  'Obrigada por contar. Observe se o Bento come, bebe água e brinca normalmente. Se algo mudar, a avaliação veterinária é o melhor caminho.',
-  'Entendi. Anote quando os sinais aparecem e por quanto tempo — isso ajuda muito a veterinária na consulta.',
-  'Faz sentido ficar atenta. Os batimentos do Bento estão estáveis pela coleira, mas só um exame confirma a causa.',
+  'Thanks for sharing. Watch whether Bento eats, drinks water and plays as usual. If anything changes, a vet visit is the best next step.',
+  'Got it. Write down when the signs show up and for how long — it really helps the vet during the visit.',
+  'It makes sense to keep an eye on it. Bento\'s heart rate is stable on the collar, but only an exam can confirm the cause.',
 ];
 
 /**

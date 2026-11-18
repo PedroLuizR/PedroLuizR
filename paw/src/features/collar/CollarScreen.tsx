@@ -11,12 +11,12 @@ export function CollarScreen() {
   return (
     <View style={styles.flex}>
       <Screen>
-        <AppHeader onAction={() => toast.show('Configurações da coleira em breve')} />
-        <ScreenTitle title="Sempre conectados" subtitle="Tecnologia que cuida de quem você ama." />
+        <AppHeader onAction={() => toast.show('Collar settings coming soon')} />
+        <ScreenTitle title="Always connected" subtitle="Technology that cares for the ones you love." />
 
         <Card variant="cream" size="lg" style={styles.product}>
-          <Image source={collar.photo} style={styles.productImg} resizeMode="cover" accessibilityLabel={`Coleira ${collar.model}`} />
-          <Badge label="Conectada ao Bento" bg={colors.surface} dotColor={colors.accent} />
+          <Image source={collar.photo} style={styles.productImg} resizeMode="cover" accessibilityLabel={`${collar.model} collar`} />
+          <Badge label="Connected to Bento" bg={colors.surface} dotColor={colors.accent} />
           <View style={styles.productInfo}>
             <Text style={[typography.cardTitle, { color: colors.textPrimary }]}>{collar.model}</Text>
             <Text style={[typography.caption, { color: colors.textMuted }]}>{collar.kind}</Text>
@@ -26,7 +26,7 @@ export function CollarScreen() {
         <Card variant="secondary" style={styles.gap}>
           <View style={styles.row}>
             <BatteryMedium size={sizes.icon} color={colors.accent} strokeWidth={sizes.iconStroke} />
-            <Text style={[typography.bodyMedium, { color: colors.textOnColor }]}>Bateria</Text>
+            <Text style={[typography.bodyMedium, { color: colors.textOnColor }]}>Battery</Text>
           </View>
           <Text style={[typography.metric, styles.battery, { color: colors.textOnColor }]}>{collar.battery}%</Text>
           <View
@@ -37,7 +37,7 @@ export function CollarScreen() {
             <View style={[styles.fill, { width: `${collar.battery}%` }]} />
           </View>
           <Text style={[typography.caption, styles.autonomy, { color: colors.textOnColorSoft }]}>
-            Até {collar.autonomyDays} dias de autonomia
+            Up to {collar.autonomyDays} days of battery life
           </Text>
         </Card>
 
@@ -45,12 +45,12 @@ export function CollarScreen() {
           <Card style={styles.col}>
             <View style={styles.row}>
               <Clock size={sizes.iconSm} color={colors.textMuted} strokeWidth={sizes.iconStroke} />
-              <Text style={[typography.caption, { color: colors.textMuted }]}>Tempo de uso hoje</Text>
+              <Text style={[typography.caption, { color: colors.textMuted }]}>Worn today</Text>
             </View>
             <Text style={[typography.h2, styles.colValue, { color: colors.textPrimary }]}>{collar.usageToday}</Text>
           </Card>
           <Card variant="lavender" style={styles.col}>
-            <Text style={[typography.caption, { color: colors.textMuted }]}>Status da coleira</Text>
+            <Text style={[typography.caption, { color: colors.textMuted }]}>Collar status</Text>
             <View style={[styles.row, styles.colValue]}>
               <View style={styles.bigDot} />
               <Text style={[typography.h2, { color: colors.primary }]}>{collar.status}</Text>
@@ -63,11 +63,11 @@ export function CollarScreen() {
             <Bluetooth size={sizes.icon} color={colors.primary} strokeWidth={sizes.iconStroke} />
           </View>
           <View style={styles.flex}>
-            <Text style={[typography.cardTitle, { color: colors.textPrimary }]}>Todos os sensores ativos</Text>
+            <Text style={[typography.cardTitle, { color: colors.textPrimary }]}>All sensors active</Text>
             <Text style={[typography.caption, { color: colors.textSecondary }]}>
-              Bluetooth {collar.bluetooth ? 'conectado' : 'desconectado'} · Sincronizado {collar.lastSync}
+              Bluetooth {collar.bluetooth ? 'connected' : 'disconnected'} · Synced {collar.lastSync}
             </Text>
-            <Text style={[typography.caption, styles.firmware, { color: colors.textMuted }]}>Firmware atualizado · {collar.firmware}</Text>
+            <Text style={[typography.caption, styles.firmware, { color: colors.textMuted }]}>Firmware up to date · {collar.firmware}</Text>
           </View>
         </Card>
       </Screen>

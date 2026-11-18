@@ -12,17 +12,17 @@ export function ClinicScreen() {
 
   const header = (
     <View>
-      <AppHeader onAction={() => toast.show('Mais opções em breve')} />
-      <ScreenTitle title={clinic.name} subtitle={`${clinic.vet} · Veterinária`} />
+      <AppHeader onAction={() => toast.show('More options coming soon')} />
+      <ScreenTitle title={clinic.name} subtitle={`${clinic.vet} · Veterinarian`} />
       <Card variant="lavender" style={styles.trust}>
         <View style={styles.tile}>
           <Plus size={sizes.icon + 2} color={colors.primary} strokeWidth={2.25} />
         </View>
         <View style={styles.flex}>
-          <Text style={[typography.cardTitle, { color: colors.textPrimary }]}>Você está em boas mãos</Text>
+          <Text style={[typography.cardTitle, { color: colors.textPrimary }]}>You're in good hands</Text>
           <View style={styles.online}>
             <View style={styles.dot} />
-            <Text style={[typography.caption, { color: colors.textSecondary }]}>Online · Responde em poucos minutos</Text>
+            <Text style={[typography.caption, { color: colors.textSecondary }]}>Online · Replies within minutes</Text>
           </View>
         </View>
       </Card>
@@ -38,7 +38,7 @@ export function ClinicScreen() {
           messages={chat.messages}
           typing={chat.typing}
           onSend={chat.send}
-          placeholder="Escreva sua mensagem…"
+          placeholder="Write your message…"
           attach
         />
       </Screen>

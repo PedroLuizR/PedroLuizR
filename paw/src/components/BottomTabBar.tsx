@@ -8,12 +8,12 @@ import { CollarIcon } from './CollarIcon';
 type IconComp = ComponentType<Pick<LucideProps, 'size' | 'color' | 'strokeWidth'>>;
 
 const TABS: Record<string, { label: string; Icon: IconComp }> = {
-  index: { label: 'Início', Icon: Home },
-  mapa: { label: 'Mapa', Icon: MapPin },
-  clinica: { label: 'Clínica', Icon: MessageSquare },
+  index: { label: 'Home', Icon: Home },
+  map: { label: 'Map', Icon: MapPin },
+  clinic: { label: 'Clinic', Icon: MessageSquare },
   closet: { label: 'Closet', Icon: Shirt },
-  coleira: { label: 'Coleira', Icon: CollarIcon as IconComp },
-  ia: { label: 'PAW IA', Icon: Sparkles },
+  collar: { label: 'Collar', Icon: CollarIcon as IconComp },
+  ai: { label: 'PAW AI', Icon: Sparkles },
 };
 
 export function BottomTabBar({ state, navigateToTab, insets }: BottomTabBarProps) {
