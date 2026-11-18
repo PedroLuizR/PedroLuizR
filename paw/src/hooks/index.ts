@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Location from 'expo-location';
 import { Platform } from 'react-native';
 import { aiChat, clinicChat, clinics, collar, pet, petCoords, user, type ChatMessage, type Clinic, type LatLng } from '../data/mock';
-import { placesAvailable, searchNearbyVets } from '../services/places';
+import { distanceMeters, placesAvailable, searchNearbyVets } from '../services/places';
 import { sendMessage, type AiTurn } from '../services/ai';
 import { timing } from '../theme/tokens';
 
@@ -48,6 +48,20 @@ export type NearbyState = {
   notice?: string;
 };
 
+/**
+ * Clínicas de exemplo reposicionadas ao redor de `origin`, mantendo o mesmo
+ * desenho relativo. Assim o modo de exemplo funciona em qualquer estado
+ * (sem puxar o mapa para São Paulo) e as distâncias ficam coerentes.
+ */
+function samplesAround(origin: LatLng): Clinic[] {
+  const dLat = origin.latitude - petCoords.latitude;
+  const dLon = origin.longitude - petCoords.longitude;
+  return clinics.map((c) => {
+    const coords = { latitude: c.coords.latitude + dLat, longitude: c.coords.longitude + dLon };
+    return { ...c, coords, distanceM: distanceMeters(origin, coords) };
+  });
+}
+
 async function currentPosition(): Promise<{ origin: LatLng; notice?: string }> {
   if (Platform.OS === 'web') return { origin: petCoords };
   try {
@@ -80,14 +94,14 @@ export function useNearbyClinics() {
         const found = await searchNearbyVets(origin);
         if (cancelled) return;
         if (found.length === 0) {
-          setState({ clinics, origin, status: 'ready', source: 'demo', notice: 'No vet clinics found within 3 km — showing examples.' });
+          setState({ clinics: samplesAround(origin), origin, status: 'ready', source: 'demo', notice: 'No vet clinics found within 3 km — showing examples.' });
         } else {
           setState({ clinics: found, origin, status: 'ready', source: 'google', notice });
         }
       } catch (e) {
         if (cancelled) return;
         const msg = e instanceof Error ? e.message : String(e);
-        setState({ clinics, origin, status: 'ready', source: 'demo', notice: `Couldn't load real clinics (${msg}) — showing examples.` });
+        setState({ clinics: samplesAround(origin), origin, status: 'ready', source: 'demo', notice: `Couldn't load real clinics (${msg}) — showing examples.` });
       }
     })();
     return () => {

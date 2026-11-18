@@ -78,6 +78,15 @@ function illustratedPin(origin: LatLng, c: LatLng, radiusM: number) {
 
 export class PlacesError extends Error {}
 
+/** Motivos comuns de erro do Google → o que ajustar no Cloud Console. */
+const REASON_HINTS: Record<string, string> = {
+  SERVICE_DISABLED: 'Places API (New) is not enabled in the Google Cloud project',
+  API_KEY_SERVICE_BLOCKED: 'this API key is not allowed to use Places API (New) — add it to the key\'s API restrictions',
+  API_KEY_ANDROID_APP_BLOCKED: 'this API key is restricted to a different Android app or SHA-1',
+  API_KEY_INVALID: 'the API key is invalid',
+  BILLING_DISABLED: 'billing is not enabled on the Google Cloud project',
+};
+
 /** Busca veterinárias reais perto de `origin` (Places API New, Nearby Search). */
 export async function searchNearbyVets(origin: LatLng, radiusM = 3000): Promise<Clinic[]> {
   if (!placesAvailable) throw new PlacesError('Google Places is not configured');
@@ -102,8 +111,14 @@ export async function searchNearbyVets(origin: LatLng, radiusM = 3000): Promise<
       locationRestriction: { circle: { center: origin, radius: radiusM } },
     }),
   });
-  const json = (await res.json().catch(() => ({}))) as { places?: Place[]; error?: { message?: string; status?: string } };
-  if (!res.ok) throw new PlacesError(json.error?.message ?? `Places request failed (${res.status})`);
+  const json = (await res.json().catch(() => ({}))) as {
+    places?: Place[];
+    error?: { message?: string; status?: string; details?: { reason?: string }[] };
+  };
+  if (!res.ok) {
+    const reason = json.error?.details?.find((d) => d.reason)?.reason;
+    throw new PlacesError((reason && REASON_HINTS[reason]) ?? json.error?.message ?? `Places request failed (${res.status})`);
+  }
 
   return (json.places ?? [])
     .filter((p): p is Place & { location: LatLng } => Boolean(p.location))
