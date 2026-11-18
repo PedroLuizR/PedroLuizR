@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Inter, Poppins, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#24183E"/>
+    </marker>
+    <style>
+      .box text { fill: #FFFFFF; font-weight: 700; font-size: 26px; text-anchor: middle; }
+      .line { stroke: #24183E; stroke-width: 2.5; fill: none; }
+      .label { fill: #24183E; font-size: 22px; font-weight: 500; }
+      .caption { fill: #756D87; font-size: 20px; font-weight: 500; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#FAF9FD"/>
+  <text x="110" y="140" font-size="76" font-weight="700" fill="#8C6DCF">Pipeline</text>
+  <text x="114" y="188" font-size="24" font-weight="500" fill="#756D87">PAW · como o app cuida do Bento</text>
+
+  <!-- Linha de cima: coleira (roxo escuro) -->
+  <g class="box">
+    <rect x="160" y="250" width="270" height="120" rx="20" fill="#4B3A86"/>
+    <text x="295" y="319">Coleira PAW One</text>
+    <rect x="510" y="250" width="270" height="120" rx="20" fill="#4B3A86"/>
+    <text x="645" y="319">Bluetooth</text>
+    <rect x="860" y="250" width="290" height="120" rx="20" fill="#4B3A86"/>
+    <text x="1005" y="302">Sinais vitais</text>
+    <text x="1005" y="338" style="font-size:21px;font-weight:500">(batimento, atividade)</text>
+  </g>
+
+  <!-- Centro: análise -->
+  <g class="box">
+    <rect x="860" y="440" width="290" height="120" rx="20" fill="#8C6DCF"/>
+    <text x="1005" y="492">Análise de saúde</text>
+    <text x="1005" y="528">(IA)</text>
+  </g>
+
+  <!-- Linha de baixo: tutor (azul-lavanda) -->
+  <g class="box">
+    <rect x="160" y="630" width="270" height="120" rx="20" fill="#6D83CF"/>
+    <text x="295" y="699">Tutor</text>
+    <rect x="510" y="630" width="270" height="120" rx="20" fill="#6D83CF"/>
+    <text x="645" y="699">PAW IA (chat)</text>
+    <rect x="860" y="630" width="290" height="120" rx="20" fill="#6D83CF"/>
+    <text x="1005" y="682">Relato</text>
+    <text x="1005" y="718" style="font-size:21px;font-weight:500">(sintomas, hábitos)</text>
+  </g>
+
+  <!-- Resultados -->
+  <g class="box">
+    <rect x="1290" y="330" width="240" height="96" rx="18" fill="#7FB04F"/>
+    <text x="1410" y="387">Tudo em dia</text>
+    <rect x="1290" y="574" width="240" height="96" rx="18" fill="#C8553D"/>
+    <text x="1410" y="631">Atenção</text>
+  </g>
+  <text class="caption" x="1410" y="312">Tela Início</text>
+  <text class="caption" x="1410" y="700">Mapa → Chat com a clínica</text>
+
+  <!-- Setas -->
+  <path class="line" d="M430 310 H506" marker-end="url(#arrow)"/>
+  <path class="line" d="M780 310 H856" marker-end="url(#arrow)"/>
+  <path class="line" d="M430 690 H506" marker-end="url(#arrow)"/>
+  <path class="line" d="M780 690 H856" marker-end="url(#arrow)"/>
+  <path class="line" d="M1005 370 V436" marker-end="url(#arrow)"/>
+  <path class="line" d="M1005 630 V564" marker-end="url(#arrow)"/>
+  <path class="line" d="M1150 500 H1230"/>
+  <path class="line" d="M1230 500 V378 H1286" marker-end="url(#arrow)"/>
+  <path class="line" d="M1230 500 V622 H1286" marker-end="url(#arrow)"/>
+  <text class="label" x="1242" y="470">normal</text>
+  <text class="label" x="1242" y="545">alterado</text>
+</svg>
