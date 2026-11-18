@@ -16,6 +16,16 @@ npx expo start          # Android / iOS (Expo Go) ou "w" para web
 npm run typecheck
 ```
 
+## Gerando o APK (local)
+Requer JDK 17 e Android SDK (platform `android-37.0`, build-tools 37.0.0, NDK 27.1.12297006, CMake 3.22.1).
+```bash
+npx expo prebuild --platform android
+cd android && echo "sdk.dir=$ANDROID_HOME" > local.properties
+JAVA_HOME=/caminho/jdk-17 ./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
+# → android/app/build/outputs/apk/release/app-release.apk
+```
+O APK release sai assinado com a chave de debug (bom para instalar e testar; para a Play Store, configure uma keystore própria ou use `eas build`).
+
 ## Estrutura
 ```
 app/                    rotas (expo-router)
