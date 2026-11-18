@@ -15,8 +15,8 @@ export function CollarScreen() {
         <ScreenTitle title="Sempre conectados" subtitle="Tecnologia que cuida de quem você ama." />
 
         <Card variant="cream" size="lg" style={styles.product}>
+          <Image source={collar.photo} style={styles.productImg} resizeMode="cover" accessibilityLabel={`Coleira ${collar.model}`} />
           <Badge label="Conectada ao Bento" bg={colors.surface} dotColor={colors.accent} />
-          <Image source={collar.photo} style={styles.productImg} resizeMode="contain" accessibilityLabel={`Coleira ${collar.model}`} />
           <View style={styles.productInfo}>
             <Text style={[typography.cardTitle, { color: colors.textPrimary }]}>{collar.model}</Text>
             <Text style={[typography.caption, { color: colors.textMuted }]}>{collar.kind}</Text>
@@ -78,8 +78,8 @@ export function CollarScreen() {
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  product: { height: sizes.productH, padding: spacing.lg, justifyContent: 'space-between' },
-  productImg: { flex: 1, width: '100%', marginVertical: spacing.sm },
+  product: { height: sizes.productH, padding: spacing.lg, justifyContent: 'space-between', overflow: 'hidden' },
+  productImg: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' },
   productInfo: {
     flexDirection: 'row',
     alignItems: 'center',

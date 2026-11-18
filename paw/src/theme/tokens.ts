@@ -44,6 +44,11 @@ export const colors = {
   sageGreen: '#9BAF92',
   sunYellow: '#CFC86D',
   terracotta: '#C87550',
+  sageDark: '#7F9879',
+  sunDark: '#B5AE52',
+  terracottaLight: '#D88760',
+  terracottaDark: '#A95C41',
+  terracottaHighlight: '#E6AC7E',
 
   // Utilitários
   whiteTrack: 'rgba(255,255,255,0.3)',
@@ -106,6 +111,7 @@ export const radii = {
   card: 20,
   cardLg: 24,
   pill: 999,
+  tabBar: 28,
 } as const;
 
 export const sizes = {
@@ -132,7 +138,7 @@ export const sizes = {
   closetItemW: 112,
   closetItemH: 110,
   check: 22,
-  productH: 300,
+  productH: 340,
   progressH: 8,
   chatMaxWidth: '78%',
   sendButton: 40,
