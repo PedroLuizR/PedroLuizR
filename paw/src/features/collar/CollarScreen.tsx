@@ -1,5 +1,7 @@
-import { BatteryMedium, Bluetooth, Clock } from 'lucide-react-native';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { BatteryMedium, Bluetooth, Clock, Rotate3d } from 'lucide-react-native';
+import { useState } from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Model3DModal } from '../three/Model3DModal';
 import { AppHeader, Badge, Card, Screen, ScreenTitle, useToast } from '../../components';
 import { useCollar } from '../../hooks';
 import { colors, radii, sizes, spacing, typography } from '../../theme/tokens';
@@ -7,6 +9,7 @@ import { colors, radii, sizes, spacing, typography } from '../../theme/tokens';
 export function CollarScreen() {
   const collar = useCollar();
   const toast = useToast();
+  const [show3d, setShow3d] = useState(false);
 
   return (
     <View style={styles.flex}>
@@ -16,7 +19,13 @@ export function CollarScreen() {
 
         <Card variant="cream" size="lg" style={styles.product}>
           <Image source={collar.photo} style={styles.productImg} resizeMode="cover" accessibilityLabel={`${collar.model} collar`} />
-          <Badge label="Connected to Bento" bg={colors.surface} dotColor={colors.accent} />
+          <View style={styles.productTop}>
+            <Badge label="Connected to Bento" bg={colors.surface} dotColor={colors.accent} />
+            <Pressable onPress={() => setShow3d(true)} accessibilityRole="button" accessibilityLabel="View collar in 3D" style={styles.view3d}>
+              <Rotate3d size={sizes.iconSm} color={colors.textPrimary} strokeWidth={sizes.iconStroke} />
+              <Text style={[typography.label, { color: colors.textPrimary }]}>3D</Text>
+            </Pressable>
+          </View>
           <View style={styles.productInfo}>
             <Text style={[typography.cardTitle, { color: colors.textPrimary }]}>{collar.model}</Text>
             <Text style={[typography.caption, { color: colors.textMuted }]}>{collar.kind}</Text>
@@ -72,6 +81,13 @@ export function CollarScreen() {
         </Card>
       </Screen>
       {toast.node}
+      <Model3DModal
+        visible={show3d}
+        onClose={() => setShow3d(false)}
+        subject={{ kind: 'collar' }}
+        title={collar.model}
+        subtitle={collar.kind}
+      />
     </View>
   );
 }
@@ -79,6 +95,16 @@ export function CollarScreen() {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   product: { height: sizes.productH, padding: spacing.lg, justifyContent: 'space-between', overflow: 'hidden' },
+  productTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  view3d: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs + spacing.xxs,
+    backgroundColor: colors.surface,
+    borderRadius: radii.pill,
+    paddingHorizontal: spacing.md,
+    minHeight: sizes.touch - spacing.sm,
+  },
   productImg: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' },
   productInfo: {
     flexDirection: 'row',

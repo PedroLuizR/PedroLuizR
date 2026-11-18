@@ -4,6 +4,7 @@ import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-nati
 import { AppHeader, Badge, Card, Chip, PrimaryButton, Screen, ScreenTitle, useToast } from '../../components';
 import { closetItems, pet, type ClosetCategory, type ClosetItemKind } from '../../data/mock';
 import { colors, radii, shadows, sizes, spacing, typography } from '../../theme/tokens';
+import { Model3DModal } from '../three/Model3DModal';
 import { ClothingIcon } from './ClothingIcon';
 
 type Filter = 'todos' | ClosetCategory;
@@ -18,6 +19,7 @@ export function ClosetScreen() {
   const [selected, setSelected] = useState<ClosetItemKind>('moletom');
   const [applied, setApplied] = useState<ClosetItemKind>('moletom');
   const toast = useToast();
+  const [show3d, setShow3d] = useState(false);
 
   const items = useMemo(() => closetItems.filter((i) => filter === 'todos' || i.category === filter), [filter]);
   const isApplied = selected === applied;
@@ -33,7 +35,7 @@ export function ClosetScreen() {
           <Image source={pet.closetPhoto} style={styles.photo} resizeMode="cover" accessibilityLabel={`${pet.name} wearing the ${appliedItem?.name.toLowerCase() ?? 'outfit'}`} />
           <Badge label="Outfit on" bg={colors.surface} dotColor={colors.accent} />
           <Pressable
-            onPress={() => toast.show('360° view coming soon')}
+            onPress={() => setShow3d(true)}
             accessibilityRole="button"
             accessibilityLabel="View in 360 degrees"
             style={styles.rotate}
@@ -89,6 +91,13 @@ export function ClosetScreen() {
         />
       </Screen>
       {toast.node}
+      <Model3DModal
+        visible={show3d}
+        onClose={() => setShow3d(false)}
+        subject={{ kind: 'dog', outfit: applied }}
+        title={`${pet.name} in 3D`}
+        subtitle={appliedItem ? `Wearing the ${appliedItem.name.toLowerCase()} · ${appliedItem.color}` : undefined}
+      />
     </View>
   );
 }

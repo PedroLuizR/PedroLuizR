@@ -50,6 +50,17 @@ export const colors = {
   terracottaDark: '#A95C41',
   terracottaHighlight: '#E6AC7E',
 
+  // 3D (modelo do Bento e da coleira)
+  fur: '#DCA45C',
+  furLight: '#F3D6A4',
+  furShade: '#B9813F',
+  nose: '#2B1D14',
+  tongue: '#E58A8A',
+  collarStrap: '#3E5B47',
+  collarDevice: '#4F6F58',
+  metal: '#C9C6C0',
+  shadow3d: '#24183E',
+
   // Utilitários
   whiteTrack: 'rgba(255,255,255,0.3)',
   shadow: '#24183E',
