@@ -10,6 +10,11 @@ const PROGUARD_RULES = [
   '-keep class * extends androidx.room.RoomDatabase { *; }',
   '-keep class androidx.startup.** { *; }',
   '-dontwarn androidx.work.**',
+  // Views nativas do Expo (ex.: GLView do 3D) são criadas por reflexão com o
+  // construtor (Context, AppContext); sem isto o R8 o remove e o app fecha.
+  '-keep class * extends expo.modules.kotlin.views.ExpoView { <init>(...); }',
+  '-keep class expo.modules.gl.** { *; }',
+  '-keepclassmembers class * { <init>(android.content.Context, expo.modules.kotlin.AppContext); }',
 ].join('\n');
 
 /** SHA-1 da chave de debug que assina o APK hoje (troque ao usar uma keystore própria). */
