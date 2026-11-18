@@ -4,12 +4,17 @@ import { ActivityIndicator, PanResponder, StyleSheet, View, type StyleProp, type
 import * as THREE from 'three';
 import type { ClosetItemKind } from '../../data/mock';
 import { colors } from '../../theme/tokens';
-import { loadBento } from './loadBento';
+import { loadBento, loadCollar } from './loadBento';
 import { buildCollar, buildDog, buildGroundShadow } from './models';
 
 export type Model3DSubject = { kind: 'dog'; outfit?: ClosetItemKind } | { kind: 'collar' };
 
-type Props = { subject: Model3DSubject; style?: StyleProp<ViewStyle> };
+type Props = {
+  subject: Model3DSubject;
+  style?: StyleProp<ViewStyle>;
+  /** Modo embutido (cards): só o arrasto horizontal gira, para a tela continuar rolando. */
+  embedded?: boolean;
+};
 
 const AUTO_SPEED = 0.006; // rad/frame
 const DRAG_SPEED = 0.012; // rad/px
@@ -20,18 +25,19 @@ const MAX_TILT = 0.35;
  * Visualizador 3D com rotação 360°: arraste na horizontal para girar,
  * na vertical para inclinar. Gira sozinho quando ninguém está tocando.
  */
-export function Model3DViewer({ subject, style }: Props) {
+export function Model3DViewer({ subject, style, embedded = false }: Props) {
   const spin = useRef({ yaw: -0.6, tilt: 0, dragging: false, lastTouch: 0, lastDx: 0, lastDy: 0 });
   const frame = useRef<number | null>(null);
-  const [loading, setLoading] = useState(subject.kind === 'dog');
+  const [loading, setLoading] = useState(true);
   const alive = useRef(true);
   const subjectKey = subject.kind === 'dog' ? `dog:${subject.outfit ?? ''}` : 'collar';
 
   const pan = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderTerminationRequest: () => false,
+      onStartShouldSetPanResponder: () => !embedded,
+      // Embutido: só captura gestos claramente horizontais (o vertical rola a tela).
+      onMoveShouldSetPanResponder: (_e, g) => !embedded || (Math.abs(g.dx) > 8 && Math.abs(g.dx) > Math.abs(g.dy) * 1.5),
+      onPanResponderTerminationRequest: () => embedded,
       onPanResponderGrant: () => {
         const s = spin.current;
         s.dragging = true;
@@ -41,7 +47,7 @@ export function Model3DViewer({ subject, style }: Props) {
       onPanResponderMove: (_e, g) => {
         const s = spin.current;
         s.yaw += (g.dx - s.lastDx) * DRAG_SPEED;
-        s.tilt = Math.max(-MAX_TILT, Math.min(MAX_TILT, s.tilt + (g.dy - s.lastDy) * DRAG_SPEED * 0.5));
+        if (!embedded) s.tilt = Math.max(-MAX_TILT, Math.min(MAX_TILT, s.tilt + (g.dy - s.lastDy) * DRAG_SPEED * 0.5));
         s.lastDx = g.dx;
         s.lastDy = g.dy;
       },
@@ -129,7 +135,7 @@ export function Model3DViewer({ subject, style }: Props) {
           spin.current.yaw = 0.5; // começa em 3/4, olhando para a câmera
         })
         .catch((e) => {
-          console.warn('[PAW 3D] Falling back to stylized Bento:', e);
+          console.warn('[PAW 3D] Using stylized Bento:', e);
           if (!alive.current) return;
           const dog = buildDog(subject.outfit);
           dog.position.x = -0.18;
@@ -139,12 +145,26 @@ export function Model3DViewer({ subject, style }: Props) {
         })
         .finally(() => alive.current && setLoading(false));
     } else {
-      const collar = buildCollar(1, 0.34);
-      collar.rotation.x = 0.35;
-      collar.position.y = 0.75;
-      pivot.add(collar);
-      scene.add(buildGroundShadow(1.25));
-      fit();
+      // Coleira rastreadora real (modelo .glb); se não carregar, usa a coleira estilizada.
+      loadCollar()
+        .then((collar) => {
+          if (!alive.current) return;
+          pivot.add(collar);
+          const r = fit(0.8);
+          scene.add(buildGroundShadow(r * 0.7));
+          spin.current.yaw = -0.4; // começa mostrando o rastreador
+        })
+        .catch((e) => {
+          console.warn('[PAW 3D] Using stylized collar:', e);
+          if (!alive.current) return;
+          const collar = buildCollar(1, 0.34);
+          collar.rotation.x = 0.35;
+          collar.position.y = 0.75;
+          pivot.add(collar);
+          scene.add(buildGroundShadow(1.25));
+          fit();
+        })
+        .finally(() => alive.current && setLoading(false));
     }
 
     const render = () => {

@@ -1,7 +1,8 @@
 import { BatteryMedium, Bluetooth, Clock, Rotate3d } from 'lucide-react-native';
 import { useState } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Model3DModal } from '../three/Model3DModal';
+import { Model3DViewer } from '../three/Model3DViewer';
 import { AppHeader, Badge, Card, Screen, ScreenTitle, useToast } from '../../components';
 import { useCollar } from '../../hooks';
 import { colors, radii, sizes, spacing, typography } from '../../theme/tokens';
@@ -18,7 +19,8 @@ export function CollarScreen() {
         <ScreenTitle title="Always connected" subtitle="Technology that cares for the ones you love." />
 
         <Card variant="cream" size="lg" style={styles.product}>
-          <Image source={collar.photo} style={styles.productImg} resizeMode="cover" accessibilityLabel={`${collar.model} collar`} />
+          {/* Coleira rastreadora em 3D; pausa enquanto a tela cheia está aberta. */}
+          {show3d ? null : <Model3DViewer subject={{ kind: 'collar' }} style={styles.productImg} embedded />}
           <View style={styles.productTop}>
             <Badge label="Connected to Bento" bg={colors.surface} dotColor={colors.accent} />
             <Pressable onPress={() => setShow3d(true)} accessibilityRole="button" accessibilityLabel="View collar in 3D" style={styles.view3d}>

@@ -57,6 +57,7 @@ export const colors = {
   nose: '#2B1D14',
   tongue: '#E58A8A',
   collarStrap: '#3E5B47',
+  collarWine: '#651F3B', // tecido da coleira rastreadora (modelo 3D)
   collarDevice: '#4F6F58',
   metal: '#C9C6C0',
   shadow3d: '#24183E',

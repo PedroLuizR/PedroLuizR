@@ -1,10 +1,11 @@
 import { Check, RotateCw } from 'lucide-react-native';
 import { useMemo, useState } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { AppHeader, Badge, Card, Chip, PrimaryButton, Screen, ScreenTitle, useToast } from '../../components';
 import { closetItems, pet, type ClosetCategory, type ClosetItemKind } from '../../data/mock';
 import { colors, radii, shadows, sizes, spacing, typography } from '../../theme/tokens';
 import { Model3DModal } from '../three/Model3DModal';
+import { Model3DViewer } from '../three/Model3DViewer';
 import { ClothingIcon } from './ClothingIcon';
 
 type Filter = 'todos' | ClosetCategory;
@@ -32,7 +33,8 @@ export function ClosetScreen() {
         <ScreenTitle title={`${pet.name}'s style`} subtitle="A look for every adventure." />
 
         <Card variant="cream" size="lg" style={styles.preview}>
-          <Image source={pet.closetPhoto} style={styles.photo} resizeMode="cover" accessibilityLabel={`${pet.name} wearing the ${appliedItem?.name.toLowerCase() ?? 'outfit'}`} />
+          {/* Bento em 3D (gira arrastando para os lados); pausa enquanto a tela cheia está aberta. */}
+          {show3d ? null : <Model3DViewer subject={{ kind: 'dog', outfit: applied }} style={styles.photo} embedded />}
           <Badge label="Outfit on" bg={colors.surface} dotColor={colors.accent} />
           <Pressable
             onPress={() => setShow3d(true)}
